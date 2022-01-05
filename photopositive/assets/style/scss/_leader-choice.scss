@@ -1,0 +1,220 @@
+.choose-leader {
+  padding: 60px 0 60px 0;
+
+  > h2 {
+    margin: 0 auto 40px;
+    font-size: 40px;
+    font-weight: 700;
+    color: #020e64;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__select {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > p {
+      font-size: 20px;
+      font-weight: 500;
+      color: #020e64;
+      text-align: center;
+    }
+    > form {
+      display: flex;
+      justify-content: center;
+
+      > input[type=radio] {display:none;}
+      > input[type=radio]:checked + div {display: block;}
+      > div {
+        display: none;
+
+        > label {
+
+          > i {
+            font-size: 30px;
+            color: #020e64;
+            cursor: pointer;
+            margin: 0 5px 0 15px;
+            /* transition: 0.3s; */
+            &:hover {
+              color: red;
+            }
+          }
+        }
+      }
+    }
+    .select-option {
+      border: none;
+      outline: none;
+      background: none;
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      font-size: 20px;
+      font-weight: 500;
+      color: #020e64;
+      text-align: center;
+      cursor: pointer;
+      padding: 5px 10px 5px 10px;
+
+      > option {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__content {
+    height: 100px;
+    width: #{calc(100% - 60px)};
+    max-width: 800px;
+    margin: 40px auto 0;
+    position: relative;
+
+    .card {
+      width: #{calc((100% - 40px) / 3)};
+      min-width: 100px;
+      background-color: $bgColor;
+      margin-bottom: 15px;
+      box-shadow: 0px 15px 15px 0px #000000;
+      position: absolute;
+      @media (max-width: 460px) {
+          width: #{calc((100% - 20px) / 2)};
+      }
+      @media (max-width: 320px) {
+          width: 100%;
+      }
+
+      &__image {
+        position: relative;
+        cursor: pointer;
+
+        > img {
+          width: 100%;
+          -o-object-fit: contain;
+             object-fit: contain;
+        }
+
+        .card__comment {
+          display: flex;
+          position: absolute;
+          background-color: rgba(2, 14, 100, 0.8);
+          height: 100%;
+          width: 100%;
+          top: 0;
+          left: 0;
+          text-indent: 10%;
+          overflow: hidden;
+          opacity: 0;
+          justify-content: center;
+          align-items: center;
+          /* transition: 0.3s; */
+
+          > a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            /* margin: 5% 5% 0 5%; */
+            padding: 5% 5% 0 5%;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+          }
+        }
+        &:hover .card__comment {
+          opacity: 1;
+        }
+      }
+
+      &__info {
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        > .number {
+          position: absolute;
+          top: 0;
+          left: 3%;
+          height: 100%;
+          font-size: 13px;
+          color: rgba(2, 14, 100, 0.5);
+          display: flex;
+          align-items: center;
+        }
+
+        > div {
+          > form {
+            > button {
+              border: none;
+              outline: none;
+              background: none;
+
+              > i {
+                font-size: 16px;
+                color: #020e64;
+                right: 4px;
+                cursor: pointer;
+                /* transition: 0.3s; */
+                &:hover {
+                  color: red;
+                }
+              }
+            }
+          }
+          @media(hover: hover) and (pointer: fine) {
+            &:hover > form > button:first-child {
+              display: block;
+            }
+            &:hover > form > button:last-child {
+              display: none;
+            }
+          }
+
+          > div {
+            > button {
+              border: none;
+              outline: none;
+              background: none;
+
+              > i {
+                font-size: 16px;
+                color: #020e64;
+                right: 4px;
+                cursor: pointer;
+                /* transition: 0.3s; */
+                &:hover {
+                  color: red;
+                }
+              }
+            }
+          }
+          @media(hover: hover) and (pointer: fine) {
+            &:hover > div > button:first-child {
+              display: block;
+            }
+            &:hover > div > button:last-child {
+              display: none;
+            }
+          }
+        }
+
+        > p {
+          font-size: 13px;
+          font-weight: 900;
+          color: #020e64;
+          letter-spacing: 0.01em;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+}

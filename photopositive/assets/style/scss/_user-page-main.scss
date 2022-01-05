@@ -1,0 +1,407 @@
+.user-page {
+  padding: 40px 0 100px 0;
+
+  > input[type=radio] {
+    display: none;
+  }
+  > input[id="user"]:checked + input + input + div > div > label[for=user] {
+    color: #040459;
+  }
+  > input[id="user"]:checked + input + input + div > div + div > .user {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    > .user-form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+
+      @media (max-width: 730px) { align-items: center; }
+
+      > p {
+        font-size: 14px;
+        font-weight: 400;
+        color: #525252;
+        max-width: 500px;
+        margin: 0 0 40px 0;
+        text-align: center;
+      }
+      > input {
+        height: 45px;
+        width: 100%;
+        max-width: 430px;
+        padding-left: 20px;
+        overflow: hidden;
+        border: none;
+        outline: none;
+        box-shadow: $shadow;
+        margin: 0 0 20px 0;
+        border-radius: 0;
+      }
+      > h3 {
+        width: 100%;
+        max-width: 400px;
+        font-size: 19px;
+        font-weight: 900;
+        color: #525252;
+        text-align: left;
+        margin: 0 0 25px 0;
+
+        > label {
+          cursor:pointer;
+          &:hover {
+            color: #040459;
+          }
+        }
+
+        > i {
+          margin-left: 10px;
+        }
+      }
+      .user-form-changepassword {
+        cursor: pointer;
+        &:hover {
+          color: #040459;
+        }
+      }
+      .user-form-password-field {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        > input {
+          height: 45px;
+          width: 100%;
+          max-width: 430px;
+          padding-left: 20px;
+          overflow: hidden;
+          border: none;
+          outline: none;
+          box-shadow: $shadow;
+          margin: 0 0 20px 0;
+          border-radius: 0;
+        }
+      }
+      > input[type=submit] {
+        height: 60px;
+        max-width: 300px;
+        overflow: hidden;
+        border: none;
+        outline: none;
+        box-shadow: $shadow;
+        margin: 60px auto 25px;
+        padding: 0 50px 0 50px;
+        cursor: pointer;
+        font-size: 19px;
+        font-weight: 900;
+        color: #ffffff;
+        background-color: #e00109;
+        border-radius: 0;
+      }
+    }
+  }
+  > input[id="foto"]:checked + input + div > div > label[for=foto] {
+    color: #040459;
+  }
+  > input[id="foto"]:checked + input + div > div + div > div + .foto {
+    display: block;
+    width: 100%;
+
+    .image-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .image-field {
+        width: 100%;
+        .space {
+          height: 200px;
+          width: 200px;
+        }
+        .card {
+          width: #{calc(((100% - 40px) / 3) - 2%)};
+          min-width: 100px;
+          background-color: $bgColor;
+          padding: 1%;
+          margin-bottom: 15px;
+          box-shadow: $shadow;
+          position: absolute;
+          z-index: 1;
+          @media (max-width: 660px) {
+              width: #{calc(((100% - 20px) / 2) - 2%)};
+          }
+          @media (max-width: 420px) {
+              width: #{calc(100% - 2%)};
+          }
+
+          &__image {
+            position: relative;
+            cursor: pointer;
+
+            .del-foto {
+              position: absolute;
+              top: 5px;
+              right: 5px;
+              z-index: 3;
+
+              > button {
+                border: none;
+                outline: none;
+                background: none;
+                cursor: pointer;
+
+                > i {
+                  font-size: 2em;
+                  color: grey;
+                  &:hover {
+                    color: red;
+                  }
+                }
+              }
+            }
+
+            > a > img {
+              width: 100%;
+              -o-object-fit: contain;
+                 object-fit: contain;
+            }
+            .card__comment {
+              display: none;
+              position: absolute;
+              background-color: rgba(2, 14, 100, 0.8);
+              height: 100%;
+              width: 100%;
+              top: 0;
+              left: 0;
+              text-indent: 10%;
+              overflow: hidden;
+              justify-content: center;
+              align-items: center;
+
+              > p {
+                margin: 5% 5% 0 5%;
+                font-size: 18px;
+                font-weight: 500;
+                color: #ffffff;
+                letter-spacing: 0.01em;
+                text-align: justify;
+                cursor: pointer;
+              }
+            }
+            &:hover .card__comment {
+              display: flex;
+            }
+          }
+          &__info {
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            > div {
+              > form {
+                > button {
+                  border: none;
+                  outline: none;
+                  background: none;
+
+                  > i {
+                    font-size: 16px;
+                    color: #020e64;
+                    right: 4px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    &:hover {
+                      color: red;
+                    }
+                  }
+                }
+              }
+              &:hover > form > button:first-child {
+                display: block;
+              }
+              &:hover > form > button:last-child {
+                display: none;
+              }
+            }
+
+            > p {
+              font-size: 13px;
+              font-weight: 900;
+              color: #020e64;
+              letter-spacing: 0.01em;
+              margin-left: 4px;
+            }
+          }
+        }
+      }
+      .image-button {
+        > button[type=submit] {
+          height: 60px;
+          max-width: 300px;
+          margin: 60px 0 0 0;
+          padding: 0 50px 0 50px;
+          overflow: hidden;
+          border: none;
+          outline: none;
+          box-shadow: $shadow;
+          cursor: pointer;
+          font-size: 19px;
+          font-weight: 900;
+          color: #ffffff;
+          background-color: #e00109;
+          border-radius: 0;
+        }
+      }
+    }
+
+  }
+  > input[id="work"]:checked + div > div > label[for=work] {
+    color: #040459;
+  }
+  > input[id="work"]:checked + div > div + div > .work {
+    display: block;
+    width: 100%;
+
+    .foto-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      > h2 {
+        font-size: 19px;
+        font-weight: 700;
+        color: #525252;
+      }
+      .add-foto {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        @media (max-width: 730px) { justify-content: center; }
+
+        .foto-space {
+          height: 205px;
+          width: 205px;
+          background-color: #aaaaaa;
+          background-position: center;
+          background-size: cover;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          @media (max-width: 730px) { margin: 25px 0 0 0;}
+
+          > input {
+            opacity: 0;
+            width: 100%;
+            border: none;
+            background: none;
+            outline: none;
+
+          }
+          > label {
+            > i {
+              margin: -10px 0 0 0;
+              font-size: 5em;
+              cursor: pointer;
+              transition: 0.3s;
+              &:hover {
+                color: red;
+              }
+            }
+          }
+        }
+      }
+      .add-comment {
+        width: 100%;
+        box-shadow: $shadow;
+        margin: 80px 0 50px 0;
+
+        > textarea {
+          height: 100%;
+          min-height: 160px;
+          width: 100%;
+          resize: none;
+          border: none;
+          outline: none;
+          font-size: 19px;
+          color: #000000;
+          text-align: center;
+          padding: 10px 0 0 0;
+          overflow: hidden;
+
+          &::-moz-placeholder {
+            color: #737373;
+          }
+
+          &:-ms-input-placeholder {
+            color: #737373;
+          }
+
+          &::placeholder {
+            color: #737373;
+          }
+        }
+      }
+      > p {
+        font-size: 14px;
+        color: #818181;
+        text-align: center;
+      }
+      > input[type=submit] {
+        height: 60px;
+        max-width: 300px;
+        margin: 60px 0 0 0;
+        padding: 0 50px 0 50px;
+        overflow: hidden;
+        border: none;
+        outline: none;
+        box-shadow: $shadow;
+        cursor: pointer;
+        font-size: 19px;
+        font-weight: 900;
+        color: #ffffff;
+        background-color: #e00109;
+        border-radius: 0;
+      }
+    }
+
+  }
+
+  > .flex {
+    height: inherit;
+    width: #{calc(100% - 60px)};
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+
+    > .flex__links {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      @media (max-width: 730px) { position: relative; }
+
+
+      > label {
+        font-size: 19px;
+        font-weight: 700;
+        color: #525252;
+        white-space: nowrap;
+        margin: 0 0 40px 0;
+        cursor: pointer;
+
+        &:hover {
+          color: #040459;
+        }
+        &:checked {
+          color: #040459;
+        }
+      }
+    }
+  }
+}

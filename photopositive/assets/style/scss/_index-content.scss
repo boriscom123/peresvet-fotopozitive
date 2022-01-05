@@ -1,0 +1,38 @@
+.main-container {
+  min-height: calc(100% - 75px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment:fixed;
+  padding: 0 0 0 0;
+  background-color: yellow;
+
+  .main-container-bg-image {
+    width: 100%;
+    position: relative;
+
+    > img {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-height: #{calc(100vh - 75px)};
+      object-fit: cover;
+      object-position: center;
+      transition: 0.3s;
+    }
+  }
+}
+@media (max-width: 590px) {.main-container {padding: 0 0 0 0;}}
+.section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 0 15px 0;
+  border-radius: 25px;
+  background-color: rgba(255,255,255,0.5);
+}
+.section-content {
+
+}

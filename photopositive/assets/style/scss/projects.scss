@@ -1,0 +1,9 @@
+// для автоотслеживания изменений: sass --watch style/scss/projects.scss:style/projects.css
+@import "variables";
+@import "basic";
+@import "navi-line";
+@import "header";
+@import "main-projects";
+@import "join";
+@import "footer";
+@import "modal";

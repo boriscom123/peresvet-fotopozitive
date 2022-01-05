@@ -1,0 +1,353 @@
+// sass --watch style/scss:style
+@import "variables";
+@import "basic";
+@import "modal";
+.main-content {
+  min-height: #{calc(100% - 60px)};
+  padding-top: 60px;
+
+  .image-card {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    > .slider {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+
+      .image-card__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+        @media (max-width: 399px) { right: 0; }
+        @media (max-width: 320px) { right: 0; }
+
+        > a {
+          > img {
+            height: 30px;
+            cursor: pointer;
+          }
+          > i {
+            font-size: 3em;
+            color: #aaaaaa;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+              color: darken(#aaaaaa, 10%);
+            }
+            &:active {
+              color: darken(#aaaaaa, 20%);
+            }
+          }
+        }
+      }
+      .slider__left {
+        > a {
+          > img {
+            height: 40px;
+            cursor: pointer;
+          }
+          > i {
+           font-size: 3em;
+           color: #aaaaaa;
+           margin: 0 30px 0 30px;
+           transition: 0.3s;
+           @media (max-width: 399px) { margin: 0 20px 0 20px; }
+           @media (max-width: 320px) { margin: 0 0 0 0; }
+
+           &:hover {
+             color: darken(#aaaaaa, 10%);
+           }
+           &:active {
+             color: darken(#aaaaaa, 20%);
+           }
+         }
+        }
+      }
+      .slider__right {
+        > a {
+          > img {
+            height: 40px;
+            cursor: pointer;
+          }
+          > i {
+            font-size: 3em;
+            color: #aaaaaa;
+            margin: 0 30px 0 30px;
+            transition: 0.3s;
+            @media (max-width: 399px) { margin: 0 20px 0 20px; }
+            @media (max-width: 320px) { margin: 0 0 0 0; }
+
+            &:hover {
+              color: darken(#aaaaaa, 10%);
+            }
+            &:active {
+              color: darken(#aaaaaa, 20%);
+            }
+          }
+        }
+      }
+      .slider__card {
+        border: 3px solid #dcdcdc;
+        .slider__card-image {
+          position: relative;
+          background-color: #dcdcdc;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          > img {
+            max-height: #{calc(100vh - 60px)};
+            max-width: 100%;
+            -o-object-fit: contain;
+               object-fit: contain;
+          }
+          > div {
+            position: absolute;
+            top: 12px;
+            left: -3px;
+            background-color: rgba(238, 238, 238, 0.8);
+            padding: 12px 30px 12px 30px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #020e64;
+            @media (max-width: 499px) {
+              font-size: 18px;
+              padding: 12px 15px 12px 15px;
+              background-color: rgba(238, 238, 238, 0.8);
+            }
+            @media (max-width: 399px) {
+              font-size: 16px;
+              padding: 12px 1% 12px 1%;
+              background-color: rgba(238, 238, 238, 0.8);
+            }
+          }
+        }
+        .slider__card-info {
+          background-color: #ffffff;
+          height: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-bottom: 3px solid #dcdcdc;
+
+          > div {
+            > form {
+              > button {
+                border: none;
+                outline: none;
+                background: none;
+
+                > .d-none {
+                  display: none;
+                }
+
+                > i {
+                  font-size: 20px;
+                  color: #020e64;
+                  margin-right: 4px;
+                  cursor: pointer;
+                  &:hover {
+                    color: red;
+                  }
+                }
+              }
+            }
+            @media(hover: hover) and (pointer: fine) {
+              &:hover > form > button:first-child {
+                display: block;
+              }
+              &:hover > form > button:last-child {
+                display: none;
+              }
+            }
+
+            > div {
+              > button {
+                border: none;
+                outline: none;
+                background: none;
+
+                > .d-none {
+                  display: none;
+                }
+
+                > i {
+                  font-size: 20px;
+                  color: #020e64;
+                  margin-right: 4px;
+                  cursor: pointer;
+                  &:hover {
+                    color: red;
+                  }
+                }
+              }
+            }
+            @media(hover: hover) and (pointer: fine) {
+              &:hover > div > button:first-child {
+                display: block;
+              }
+              &:hover > div > button:last-child {
+                display: none;
+              }
+            }
+          }
+          > p {
+            font-size: 16px;
+            font-weight: 900;
+            color: #020e64;
+            letter-spacing: 0.01em;
+            margin-left: 4px;
+          }
+        }
+        .slider__card-comments {
+          padding: 15px 0 10px 0;
+          background-color: #ffffff;
+          border-bottom: 3px solid #dcdcdc;
+
+          > div {
+            padding: 5px 30px 0 30px;
+            font-size: 20px;
+            color: #292929;
+            @media (max-width: 499px) {
+              font-size: 16px;
+              padding: 5px 10px 0 10px;
+            }
+            @media (max-width: 399px) {
+              font-size: 12px;
+              padding: 5px 10px 0 10px;
+            }
+            > span {
+              font-size: 20px;
+              font-weight: 700;
+              color: #020e64;
+              margin-right: 10px;
+              @media (max-width: 499px) {
+                font-size: 16px;
+              }
+              @media (max-width: 399px) {
+                font-size: 12px;
+              }
+            }
+            > a {
+              font-size: 20px;
+              color: #828080;
+              @media (max-width: 499px) {
+                font-size: 16px;
+              }
+              @media (max-width: 399px) {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+        .slider__card-addcomm {
+          background-color: #ffffff;
+          > form {
+            display: flex;
+            justify-content: space-between;
+            @media (max-width: 599px) {
+                flex-direction: column;
+                align-items: center;
+            }
+            > input[type=text] {
+              height: 60px;
+              flex: auto;
+              outline: none;
+              border: none;
+              overflow: hidden;
+              padding-left: 30px;
+              font-size: 20px;
+              color: #606060;
+              &::-moz-placeholder {
+                font-size: 20px;
+                color: #606060;
+              }
+              &:-ms-input-placeholder {
+                font-size: 20px;
+                color: #606060;
+              }
+              &::placeholder {
+                font-size: 20px;
+                color: #606060;
+              }
+              @media (max-width: 499px) {
+                font-size: 16px;
+                padding: 0;
+                width: 100%;
+                text-align: center;
+                &::-moz-placeholder {
+                  font-size: 16px;
+                }
+                &:-ms-input-placeholder {
+                  font-size: 16px;
+                }
+                &::placeholder {
+                  font-size: 16px;
+                }
+              }
+              @media (max-width: 399px) {
+                font-size: 12px;
+                &::-moz-placeholder {
+                  font-size: 12px;
+                }
+                &:-ms-input-placeholder {
+                  font-size: 12px;
+                }
+                &::placeholder {
+                  font-size: 12px;
+                }
+              }
+            }
+            > p {
+              @media (max-width: 599px) {
+                width: 100%;
+              }
+              > input[type=submit] {
+                height: 60px;
+                padding: 0 30px 0 30px;
+                background-color: #ffffff;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: 700;
+                color: #020e64;
+                transition: 0.3s;
+                &:hover {
+                  @include elHover(#ffffff);
+                }
+
+                &:active {
+                  @include elActive(#ffffff);
+                }
+                @media (max-width: 599px) {
+                  padding: 0;
+                  width: 100%;
+                }
+                @media (max-width: 399px) {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+          .login {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            padding: 1% 0;
+            color: #020e64;
+          }
+        }
+      }
+    }
+  }
+}

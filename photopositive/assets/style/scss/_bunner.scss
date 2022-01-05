@@ -1,0 +1,129 @@
+.bunner-left {
+  width: 100%;
+  position: relative;
+  .bunner-left-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: #{calc((100% - 1100px) / 2)};
+    z-index: 3;
+    @media (max-width: 1300px) { display: none; }
+    > a {
+      display: flex;
+      > img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  .bunner-left-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    @media (max-width: 1300px) { display: none; }
+  }
+  .bunner-left-mini-content {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+
+    > a {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 100%;
+      > img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    @media (min-width: 1300px) {display:none;}
+  }
+  .bunner-left-mini-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    z-index: 5;
+    width: 100%;
+  }
+}
+.bunner-right {
+  width: 100%;
+  position: relative;
+  .bunner-right-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: #{calc((100% - 1100px) / 2)};
+    z-index: 3;
+    @media (max-width: 1300px) { display: none; }
+    > a {
+      display: flex;
+      > img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  .bunner-right-fixed {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+  }
+  .bunner-right-mini-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    > a {
+      justify-content: center;
+      align-items: flex-end;
+      > img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+    @media (min-width: 1300px) {display: none;}
+  }
+  .bunner-right-mini-fixed {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+  }
+}
+
+.bunner {
+
+  &-flex {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+
+    .bunner__content {
+      width: #{calc(100% - 60px)};
+      max-width: 800px;
+      align-self: center;
+      margin: 0 auto;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      > img {
+          width: 100%;
+      }
+    }
+  }
+}

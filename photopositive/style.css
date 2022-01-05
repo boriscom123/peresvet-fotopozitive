@@ -1,0 +1,75 @@
+/*!
+Theme Name: Photopositive
+Theme URI: http://ailike.ru
+Author: Boris Polyanskiy #ByNextPr
+Author URI: boriscom123@yandex.ru
+Description: Пересвет - Фотопозитив
+Version: 1.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: photopositive
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+*/
+.main-header .header__h2 {
+	/*background-color: #283173; */
+}
+.forms-flex .form__reg > button {
+	background-color: #e12846; 
+}
+	.navigation-line {
+    background-color: #e12846;
+	box-shadow:none;
+}
+
+.forms {
+    background-color: #27245d;
+}
+.footer {    background-color: #27245d; 
+}
+
+.main-header-opacity {
+    /* background-color: #27245d;  */
+	/* https://colorscheme.ru/color-converter.html это ссылка на ковертов цвета */
+	background-color: rgba(39, 36, 93, 1);
+	/* если указывать в таком варианте - последняя цифра отвечает за прозрачность цвета 0 - совсем прозрачный, 0.5 - на половину прозрачный, 1 - не прозрачный */
+}
+
+.gallery-header-opacity {
+    background-color: #283173;
+	box-shadow: 0px 2px 22px 2px rgb(8 8 77 / 50%);
+}
+.join {
+	/* Здесь изменяется цвет Вашего блока */
+	background-color: #283173;
+}
+}
+.join__content > button {
+   
+    background-color: #e12846; }
+.main-leaders {
+    background-color: #27245d;
+}
+
+.main-projects__flex .card { 
+    background-color: #251e5c;
+    box-shadow: 0px 20px 12px 0px #bbbbbb;
+}
+/* Цвет текста в карточке победителей */
+.main-projects__flex .card__info > div > p {
+	color: #ffffff;
+}
+/* Размер пунктов меню в ПК версии */
+.gallery-header-opacity .header-flex__links > a {
+	font-size: 20px;
+}
+/* Ширина футера */
+.footer-flex {
+	max-width: 800px;
+}
+/* Тель для карточки выбора победителя на странице галереи */
+.choose-leader__content .card {
+	box-shadow: 0px 15px 15px 0px #000000;
+}

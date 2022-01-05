@@ -1,0 +1,128 @@
+.footer {
+  width: 100%;
+  background-color: #000026;
+  padding: 11px 0 11px 0;
+  z-index: 0;
+  position: relative;
+
+  &-flex {
+    height: inherit;
+    width: #{calc(100% - 60px)};
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 499px) {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    > div {
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      > h2 {
+        font-size: 26px;
+        font-weight: 900;
+        color: $fontColor;
+        text-align: center;
+        letter-spacing: 0.01em;
+        margin: 20px 0 20px 0;
+      }
+
+      > a {
+        font-size: 20px;
+        font-weight: 400;
+        color: $fontColor;
+        letter-spacing: 0.01em;
+        margin: 10px 0 10px 0;
+        white-space: nowrap;
+
+        @media (max-width: 499px) {
+          text-align: center;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+        > img {
+          margin: 20px 0 20px 0;
+          width: 162px;
+        }
+      }
+      .active {
+        text-decoration: underline;
+      }
+
+      > p {
+        font-size: 20px;
+        font-weight: 400;
+        color: $fontColor;
+        letter-spacing: 0.01em;
+        margin: 10px 0 10px 0;
+
+        @media (max-width: 499px) {
+          text-align: center;
+        }
+      }
+
+      > h3 {
+        margin: 10px 0 10px 0;
+
+        @media (max-width: 499px) {
+          text-align: center;
+        }
+
+        > a {
+          font-size: 20px;
+          font-weight: 400;
+          color: $fontColor;
+          letter-spacing: 0.01em;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      > div {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        @media (max-width: 499px) {
+        }
+
+        .circle {
+          height: 28px;
+          width: 28px;
+          border: 2px solid $fontColor;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          > i {
+            color: $fontColor;
+          }
+        }
+      }
+    }
+  }
+  &-madeby {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    > p {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      > a {
+        color: rgba(255,255,255,0.5);
+        text-decoration: underline;
+      }
+    }
+  }
+}

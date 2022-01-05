@@ -1,0 +1,19 @@
+pv-foto.ru
+l: bynextpr
+p: Rbcekmrf123
+
+Адрес панели управления хостингом:
+https://server204.hosting.reg.ru:1500/
+l: u1026595
+p: X_xA53om
+
+Доступ к FTP:
+31.31.196.95
+l: u1026595
+p: X_xA53om
+
+Доступ к MySQL:
+Имя базы: u1026595_default
+Host: localhost
+l: u1026595_default
+p: r!6CdcK4
