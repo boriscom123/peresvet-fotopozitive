@@ -1,6 +1,6 @@
 pv-foto.ru
 l: bynextpr
-p: Rbcekmrf123
+p: Rbcekmrf
 
 Адрес панели управления хостингом:
 https://server204.hosting.reg.ru:1500/
