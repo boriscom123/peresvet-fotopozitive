@@ -1,2 +1,0 @@
-# peresvet-fotopozitive
-peresvet-fotopozitive

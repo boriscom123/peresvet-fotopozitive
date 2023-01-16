@@ -1,6 +1,6 @@
 /*!
 Theme Name: Photopositive
-Theme URI: http://ailike.ru
+Theme URI: https://github.com/boriscom123
 Author: Boris Polyanskiy #ByNextPr
 Author URI: boriscom123@yandex.ru
 Description: Пересвет - Фотопозитив
@@ -44,7 +44,6 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 .join {
 	/* Здесь изменяется цвет Вашего блока */
 	background-color: #283173;
-}
 }
 .join__content > button {
    

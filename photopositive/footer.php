@@ -71,12 +71,6 @@
 			<div class="recover-password">
 				<i class="far fa-times-circle close-fp"></i>
 				<h2>Восстановить пароль</h2>
-				<!--<form class="recover-password__form" action="" method="post">
-					<input type="email" name="email" value="" placeholder="Адрес электроннй почты" required>
-					<input type="password" name="pass1" value="" placeholder="Новый пароль" required>
-					<input type="password" name="pass1" value="" placeholder="Повторите пароль" required>
-					<input type="submit" name="changepass" value="Изменить">
-				</form>-->
 				<a href="<?php echo wp_login_url(); ?>">Восстановить пароль</a>
 			</div>
 		</div>
@@ -87,10 +81,7 @@
 				<?php
 					$page_title = 'Правила участия';
 					$rules_page = get_page_by_title( $page_title);
-					// print_r($rules_page);
 					echo $rules_page->post_content;
-					// $tel = substr(strstr(strstr($tel_page->post_content, '</p>', true), '<p>'), 3);
-					// echo strstr(strstr($insta_page->post_content, 'http'), '">', true);
 				?>
 			</div>
 		</div>

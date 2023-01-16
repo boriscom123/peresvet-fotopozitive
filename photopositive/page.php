@@ -20,11 +20,8 @@ get_header();
 			<?php
 			$page_title = 'Баннер Слева';
 			$bunner_left = get_page_by_title( $page_title );
-			//print_r($left_bunner);
 			$bunner_left_link = strstr(strstr($bunner_left->post_content, 'http'), '">', true);
 			$bunner_left_image = get_the_post_thumbnail_url($bunner_left, 'full');
-			//print_r($left_bunner_image);
-			//echo $left_bunner_link;
 			?>
 			<a href="<?php echo $bunner_left_link; ?>" target="_blank"><img src="<?php echo $bunner_left_image; ?>" alt="bunner"></a>
 		</div>
@@ -32,11 +29,8 @@ get_header();
 			<?php
 			$page_title = 'Баннер Слева Мини';
 			$bunner_left_mini = get_page_by_title( $page_title );
-			//print_r($left_bunner);
 			$bunner_left_mini_link = strstr(strstr($bunner_left_mini->post_content, 'http'), '">', true);
 			$bunner_left_mini_image = get_the_post_thumbnail_url($bunner_left_mini, 'full');
-			//print_r($left_bunner_image);
-			//echo $left_bunner_link;
 			?>
 			<a href="<?php echo $bunner_left_mini_link; ?>" target="_blank" class=""><img src="<?php echo $bunner_left_mini_image; ?>" alt="bunner"></a>
 		</div>
@@ -47,11 +41,8 @@ get_header();
 			<?php
 			$page_title = 'Баннер Справа';
 			$bunner_right = get_page_by_title( $page_title );
-			//print_r($left_bunner);
 			$bunner_right_link = strstr(strstr($bunner_right->post_content, 'http'), '">', true);
 			$bunner_right_image = get_the_post_thumbnail_url($bunner_right, 'full');
-			//print_r($left_bunner_image);
-			//echo $left_bunner_link;
 			?>
 			<a href="<?php echo $bunner_right_link; ?>" target="_blank"><img src="<?php echo $bunner_right_image; ?>" alt="bunner"></a>
 		</div>
@@ -59,11 +50,8 @@ get_header();
 			<?php
 			$page_title = 'Баннер Справа Мини';
 			$bunner_right_mini = get_page_by_title( $page_title );
-			//print_r($left_bunner);
 			$bunner_right_mini_link = strstr(strstr($bunner_right_mini->post_content, 'http'), '">', true);
 			$bunner_right_mini_image = get_the_post_thumbnail_url($bunner_right_mini, 'full');
-			//print_r($left_bunner_image);
-			//echo $left_bunner_link;
 			?>
 			<a href="<?php echo $bunner_right_mini_link; ?>" target="_blank" class=""><img src="<?php echo $bunner_right_mini_image; ?>" alt="bunner"></a>
 		</div>
@@ -77,10 +65,6 @@ get_header();
 			<div class="bunner__content">
 				<?php
 					echo do_shortcode('[supsystic-slider id=2 position="center"]');
-					// echo do_shortcode('[nextcodeslider id="1"]'); // видео слайдер
-					// echo do_shortcode('[smartslider3 slider="2"]');
-
-					/*<img src="<?php echo get_template_directory_uri(); ?>/assets/image/banner.jpg" alt="Изображение">*/
 				?>
 			</div>
 		</div>
@@ -157,16 +141,13 @@ get_header();
 				<h3></h3>
 				<div class="form__reg_login" title="Используйте только цифры">
 					<input id="input-reg-tel" type="text" name="login" value="" placeholder="8 913 504 47 02" required></div>
-				<!-- <h3>Введите Ф.И.О.</h3>
-				<div class="form__reg_name" title="Используйте русские буквы"><input type="text" name="last-name" value="" placeholder="ФИО (ru)" pattern="^[А-Яа-яЁё\s]+$" required></div> -->
 				<p>Регистрируясь, вы соглашаетесь с</p>
 				<a href="<?php echo get_template_directory_uri(); ?>/privacy.pdf" target="_blank">Политикой обработки персональных данных</a>
 				<h6>
 					После нажатия на кнопку на указанный Вами номер телефона поступит смс с паролем для подтверждения регистрации.
 				</h6>
 				<?php
-					// если пользователь залогинен - отправляем на страницу загрузка фотографии
-					if ( is_user_logged_in() ) { // проверяем зарегистринованный это пользователь или нет
+					if ( is_user_logged_in() ) {
 						echo "<button type='submit' name='go-to-add-foto' form='go-to-add-foto' value='3'>Добавить работу</button>";
 					} else {
 						echo '<button type="submit" name="reg-submit" id="reg-form-button" onclick="ym(73524736, \'reachGoal\', \'uchastie\'); return true;">Принять участие</button>';
