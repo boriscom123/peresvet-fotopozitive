@@ -1,4 +1,8 @@
-// console.log('Главная');
+let show_console = false;
+if (show_console) {
+	console.log('show_console', show_console);
+	console.log('Page', 'Главная');
+}
 // отображение навигации
 function openNav(el){
   if (openBurgerMenu[0].children[1].classList.contains('d-none')) {
@@ -217,7 +221,9 @@ let footerEl = document.getElementsByClassName('footer');
 
 // новый вид регистрации от 20-03-2021
 function telCheck(el){
-  // console.log('Функция проверки ввода номера телефона');
+  if (show_console) {
+	  console.log('Функция проверки ввода номера телефона', 'Новый вид регистрации от 20-03-2021');
+  }
   // let re = /[(^\d)|(\+)][\d\(\)\ -]{9,15}\d$/;
   let re = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
   let valid = re.test(el.children[2].children[0].value);
@@ -262,9 +268,14 @@ function telCheck(el){
       // headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: formData
     }).then(response => response.text()).then((response)=> {
-      // console.log('ответ сервера:', response);
+		if (show_console) {
+			console.log('ответ сервера:', response);
+		}
       if(response === 'true') {
-        // console.log('login был свобоен - регистрация прошла успешно. Показываем поле для ввода пароля для входа.');
+        if (show_console) {
+			console.log('login был свобоен - регистрация прошла успешно. Показываем поле для ввода пароля для входа.');
+			console.log('modalContent', modalContent);
+		}
         // показываем всплывающее окно для ввода пароля
         modalContent[0].classList.remove('d-none');
         modalContent[0].children[2].classList.remove('d-none');

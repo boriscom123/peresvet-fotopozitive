@@ -35,11 +35,78 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
     $secure_cookie = '';
     $user = wp_signon($credentials);
     if (is_wp_error($user)) {
+        // echo 'Не зашли';
     } else {
-        wp_redirect( home_url() . '/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/', 302);
+        // echo 'Успешно зашли';
+        // редирект на страницу личного кабинета
+        wp_redirect('https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/', 302);
         exit;
     }
 }
+
+// форма регистрации
+// if(isset($_POST['pass']) && isset($_POST['pass2']) && isset($_POST['u-tel'])) {
+// 	// echo "Регистрируем пользователя";
+// 	if($_POST['pass2'] === $_POST['pass2']) {
+// 		if($_POST['reg-code'] == $_SESSION['reg-code']) {
+// 			$userdata = array(
+// 				'user_login' => $_POST['u-tel'],
+// 				'user_pass'  => $_POST['pass2'],
+// 				// 'user_email' => $_POST['u-tel'].'@mail.ru',
+// 				'display_name'    => '*'.substr($_POST['u-tel'], -4),
+// 				// 'last_name'       => $_POST['u-tel'],
+// 				'nickname'        => '*'.substr($_POST['u-tel'], -4),
+// 			);
+// 			$user_id = wp_insert_user( $userdata ) ;
+// 			if( ! is_wp_error( $user_id ) ) {
+// 				// логинем пользователя после регистрации
+// 				$credentials = array(
+// 							'user_login'    => $_POST['u-tel'],
+// 							'user_password' => $_POST['pass2'],
+// 							'remember'      => true,
+// 							);
+// 				$secure_cookie = '';
+// 				$user = wp_signon( $credentials);
+// 					if ( is_wp_error($user) ) {
+// 					} else {
+// 					 // не забываем добавить номер телефона
+// 					 $current_user_id = $user_id;
+// 					 $user_tel = preg_replace('/\D/', '', $_POST['u-tel']);
+// 					 if($user_tel[0] == 8){
+// 						$user_tel = '7'.substr($user_tel, 1);
+// 					 }elseif($user_tel[0] == 9){
+// 						$user_tel = '7'.$user_tel;
+// 					 }
+// 					 wp_update_user( [ 'ID' => $current_user_id, 'description' => $user_tel] );
+// 					 // и отправить запрос на добавление новой сделки в амо срм
+// 					 // интеграция amoCRM
+// 					 if(!file_exists('amointegrationapi.json')){
+// 							// echo "Делаем новую интеграцию";
+// 							include 'amocrm.php';
+// 						 } else {
+// 							// echo "Используем имеющийся токен";
+// 							$token = explode("/",file_get_contents("amointegrationapi.json"));
+// 							if(json_decode($token[1], true)['until'] < $_SERVER['REQUEST_TIME']){
+// 								// echo "Токен просрочен";
+// 								include 'amocrmrefresh.php';
+// 								// echo "Токен обновлен";
+// 							}
+// 							// $access_token = json_decode($token[0], true)['access_token'];
+// 							echo "Отправляем в Амо";
+// 							// include 'addcontact.php';
+// 							// echo "Добавление прошло";
+// 						}
+// 					echo "редирект на страницу личного кабинета";
+// 					// wp_redirect( 'https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/', 302 );
+// 					exit;
+// 					}
+// 				// return true;
+// 			} else {
+// 				// return $user_id->get_error_message();
+// 			}
+// 		}
+// 	}
+// }
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -56,55 +123,39 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
 <header class="main-header">
     <div class="d-none">
         <?php
-        if (!file_exists('amointegrationapi.json')) {
-            include 'amocrm.php';
-        }
-        $file_name = 'amointegrationapi.json';
-        $data = json_decode(file_get_contents($file_name), true);
-        $access_token = $data['access_token'];
-        if ($data['until'] < $_SERVER['REQUEST_TIME']) {
-            include 'amocrmrefresh.php';
-        }
-        $data = json_decode(file_get_contents($file_name), true);
-        $access_token = $data['access_token'];
-        function check_account($subdomain, $access_token)
-        {
-            $link = 'https://' . $subdomain . '.amocrm.ru/api/v4/account';
-            /** Формируем заголовки */
-            $headers = [ 'Authorization: Bearer ' . $access_token ];
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curl, CURLOPT_USERAGENT, 'amoCRM-oAuth-client/1.0');
-            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
-            curl_setopt($curl, CURLOPT_URL, $link);
-            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($curl, CURLOPT_HEADER, false);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
-            $out = curl_exec($curl);
-            $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-            curl_close($curl);
-            $code = (int)$code;
-            $errors = [
-                400 => 'Bad request',
-                401 => 'Unauthorized',
-                403 => 'Forbidden',
-                404 => 'Not found',
-                500 => 'Internal server error',
-                502 => 'Bad gateway',
-                503 => 'Service unavailable',
-            ];
-
-            try {
-                /** Если код ответа не успешный - возвращаем сообщение об ошибке  */
-                if ($code < 200 || $code > 204) {
-                    throw new Exception(isset($errors[$code]) ? $errors[$code] : 'Undefined error', $code);
+        $amo_file = get_template_directory() . '/assets/amo_crm_integration/' . 'amo_crm_data.json';
+        if (!file_exists($amo_file)) {
+            echo 'Файл интеграции не найден' . PHP_EOL;
+        } else {
+//            echo 'Файл интеграции Найден' . PHP_EOL;
+            $amo_data = json_decode(file_get_contents($amo_file), true);
+//            var_dump($amo_data);
+            include 'assets/amo_crm_integration/amo_functions.php';
+            if ($amo_data['access_token'] === '') {
+                echo 'Токен не найден. Необходимо обновить интеграцию';
+                $result = get_access_token($amo_data);
+//                var_dump($result);
+                if ($result) {
+                    file_put_contents($amo_file, json_encode($result, JSON_UNESCAPED_UNICODE));
+                    echo 'Интеграция создана';
+                    $amo_data = json_decode(file_get_contents($amo_file), true);
                 }
-            } catch (\Exception $e) {
             }
-            return json_decode($out, true);
+            /** Проверка необходимости обновления токена */
+            if ($amo_data['access_token'] !== '' && $amo_data['until'] < $_SERVER['REQUEST_TIME']) {
+                echo 'Необходимо обновить токен';
+                $result = refresh_access_token($amo_data);
+                if ($result) {
+                    file_put_contents($amo_file, json_encode($result, JSON_UNESCAPED_UNICODE));
+                    echo 'Токен обновлен';
+                    $amo_data = json_decode(file_get_contents($amo_file), true);
+                }
+            }
+
+            /** Проверка доступности аккаунта АМО СРМ */
+//            $result = check_amo_account($amo_data);
+//            var_dump($result);
         }
-        $test_amo_account = check_account($data['zakirov'], $access_token);
         ?>
     </div>
     <div class="main-header-bg-image">
@@ -113,6 +164,8 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
         $page_title = 'Фотопозитив';
         $main_header_bg = get_page_by_title($page_title);
         $main_header_bg_image = get_the_post_thumbnail_url($main_header_bg, 'full');
+        //print_r($left_bunner_image);
+        //echo $left_bunner_link;
         echo "<img src='" . $main_header_bg_image . "' alt='bg'>";
         ?>
     </div>
@@ -126,8 +179,8 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
             <a class="" href="https://pv-foto.ru/">Фотопозитив</a>
             <div class="header-flex__links">
                 <a class="link-join" href="https://pv-foto.ru/#forms">Принять участие</a>
-                <a class="" href="<?php echo home_url(); ?>/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Галерея</a>
-                <a class="" href="<?php echo home_url(); ?>/%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d1%82%d0%b5%d0%bb%d0%b8/">Победители</a>
+                <a class="" href="https://pv-foto.ru/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Галерея</a>
+                <a class="" href="https://pv-foto.ru/%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d1%82%d0%b5%d0%bb%d0%b8/">Победители</a>
             </div>
             <a href="http://peresvet-group.com/"><img
                         src="<?php echo get_template_directory_uri(); ?>/assets/image/logo.png" alt="logo"></a>
@@ -136,9 +189,9 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
                     <?php
                     if (is_user_logged_in()) {
                         $avatar = get_avatar_url(get_current_user_id());
-                        echo "<a href=' .  home_url() .'/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'><img src='" . $avatar . "' alt='avatar'></a>";
+                        echo "<a href='https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'><img src='" . $avatar . "' alt='avatar'></a>";
                     } else {
-                        echo "<a href=' .  home_url() .'/#forms'><i class='fas fa-user'></i></a>";
+                        echo "<a href='https://pv-foto.ru/#forms'><i class='fas fa-user'></i></a>";
                     }
                     ?>
                 </div>
@@ -146,9 +199,9 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
                 if (is_user_logged_in()) {
                     $user_data = get_userdata(get_current_user_id());
                     $username = $user_data->get('display_name');
-                    echo "<a href=' .  home_url() .'/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'>" . $username . "</a>";
+                    echo "<a href='https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'>" . $username . "</a>";
                 } else {
-                    echo "<a href=' .  home_url() .'/#forms'>Логин</a>";
+                    echo "<a href='https://pv-foto.ru/#forms'>Логин</a>";
                 }
                 ?>
             </div>
@@ -157,20 +210,23 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
                 <div class="burger-menu d-none">
                     <?php
                     if (is_user_logged_in()) {
-                        echo "<div class=''><a href=' . home_url() . '/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'>Личный кабинет</a></div>";
+                        echo "<div class=''><a href='https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'>Личный кабинет</a></div>";
                     } else {
-                        echo "<div class=''><a href=' . home_url() . '/#forms'>Войти</a></div>";
+                        echo "<div class=''><a href='https://pv-foto.ru/#forms'>Войти</a></div>";
                     }
                     ?>
-                    <div class=""><a href="<?php echo home_url(); ?>/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Галерея</a></div>
-                    <div class=""><a href="<?php echo home_url(); ?>/%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d1%82%d0%b5%d0%bb%d0%b8/">Победители</a></div>
+                    <div class=""><a href="https://pv-foto.ru/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Галерея</a>
+                    </div>
+                    <div class=""><a
+                                href="https://pv-foto.ru/%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d1%82%d0%b5%d0%bb%d0%b8/">Победители</a>
+                    </div>
                     <?php
                     if (is_user_logged_in()) {
                         echo '<div class=""><a href="';
-                        echo wp_logout_url( home_url() );
+                        echo wp_logout_url('https://pv-foto.ru/');
                         echo '">Выход</a></div>';
                     } else {
-                        echo "<div class=''><a href=' . home_url() . '/#forms'>Принять участие</a></div>";
+                        echo "<div class=''><a href='https://pv-foto.ru/#forms'>Принять участие</a></div>";
                     }
                     ?>
                 </div>
@@ -180,15 +236,21 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
             <?php
             $page_title = 'Видео на главной странице';
             $video_page = get_page_by_title($page_title);
+            // $facebook = strstr(strstr($vk_page->post_content, 'http'), '">', true);
             print_r($video_page->post_content);
             ?>
+            <!-- <div class="">
+                <i class="fas fa-play"></i>
+            </div> -->
         </div>
+        <!-- <h2 class="header__h2"><span>50 000</span>рублей</h2> -->
         <h2></h2>
         <div class="navi-container flex-start">
             <div class="navigation-line step-3">
                 <div class="navigation-line step-4"></div>
             </div>
         </div>
+        <!-- <p class="header__p">за фотопозитив!</p> -->
         <p class="header__p"></p>
     </div>
 </header>

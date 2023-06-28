@@ -1,5 +1,5 @@
 <?php
-$file_name = 'amointegrationapi.json';
+$file_name = get_template_directory() . '/assets/amo_crm_integration/' . 'amo_crm_data.json';
 $data = json_decode(file_get_contents($file_name), true);
 
 $link = 'https://' . $data['domain'] . '.amocrm.ru/api/v2/account';
@@ -41,13 +41,20 @@ try {
 
 $lead_link = 'https://' . $data['domain'] . '.amocrm.ru/api/v4/leads'; // добавление сделки
 /** Подготовка запроса к БД */
-$new_lead = '[{"name": "Сделка с сайта Фотопозитив"}]';
+$pipeline_id = 3841165;
+//$new_lead = '[{"name": "Сделка с сайта Фотопозитив"}]';
+$request = [
+    [
+        "name" => 'Сделка с сайта Фотопозитив',
+        "pipeline_id" => $pipeline_id,
+    ],
+];
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_USERAGENT, 'amoCRM-API-client/1.0');
 curl_setopt($curl, CURLOPT_URL, $lead_link);
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-curl_setopt($curl, CURLOPT_POSTFIELDS, $new_lead);
+curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($request));
 curl_setopt($curl, CURLOPT_HEADER, false);
 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($curl, CURLOPT_COOKIEFILE, dirname(__FILE__) . '/cookie.txt'); #PHP>5.3.6 dirname(__FILE__) -> __DIR__

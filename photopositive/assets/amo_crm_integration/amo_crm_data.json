@@ -2,7 +2,7 @@
   "domain": "",
   "client_id": "",
   "client_secret": "",
-  "redirect_uri": "",
+  "redirect_uri": "https:\/\/pv-foto.ru\/",
   "token_type": "Bearer",
   "expires_in": 86400,
   "access_token": "",
