@@ -1,8 +1,8 @@
 .join {
-  height: 122px;
+  height: 200px;
   background-color: #0d0d59;
   position: relative;
-  z-index: 1;
+  //z-index: 1;
 
   &__content {
     height: inherit;
@@ -26,7 +26,8 @@
       font-weight: 900;
       color: $fontColor;
       text-align: center;
-      letter-spacing: 0.01em;
+      position: relative;
+      z-index: 5;
 
       &:hover {
         @include elHover(#e00109);

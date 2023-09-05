@@ -72,14 +72,17 @@
     max-width: 800px;
     margin: 40px auto 0;
     position: relative;
+    z-index: 5;
 
     .card {
       width: #{calc((100% - 40px) / 3)};
       min-width: 100px;
       background-color: $bgColor;
       margin-bottom: 15px;
-      box-shadow: 0px 15px 15px 0px #000000;
+      box-shadow: 0 15px 15px 0 #000000;
       position: absolute;
+      overflow: hidden;
+
       @media (max-width: 460px) {
           width: #{calc((100% - 20px) / 2)};
       }

@@ -1,0 +1,25 @@
+#line-box-block {
+  max-width: $line-max-width;
+  position: absolute;
+  width: 100%;
+  transform: translateX(-50%);
+  left: 50%;
+  z-index: 1;
+
+  > .step-start {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7px;
+    max-height: 507px;
+  }
+
+  > .step-end {
+    position: absolute;
+    height: 100px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 7px;
+  }
+}

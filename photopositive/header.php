@@ -120,21 +120,18 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
 
 <body <?php body_class(); ?>>
 
-<header class="main-header">
+<header class="main-header" id="line-start-block">
     <div class="d-none">
         <?php
         $amo_file = get_template_directory() . '/assets/amo_crm_integration/' . 'amo_crm_data.json';
         if (!file_exists($amo_file)) {
             echo 'Файл интеграции не найден' . PHP_EOL;
         } else {
-//            echo 'Файл интеграции Найден' . PHP_EOL;
             $amo_data = json_decode(file_get_contents($amo_file), true);
-//            var_dump($amo_data);
             include 'assets/amo_crm_integration/amo_functions.php';
             if ($amo_data['access_token'] === '') {
                 echo 'Токен не найден. Необходимо обновить интеграцию';
                 $result = get_access_token($amo_data);
-//                var_dump($result);
                 if ($result) {
                     file_put_contents($amo_file, json_encode($result, JSON_UNESCAPED_UNICODE));
                     echo 'Интеграция создана';
@@ -154,7 +151,6 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
 
             /** Проверка доступности аккаунта АМО СРМ */
 //            $result = check_amo_account($amo_data);
-//            var_dump($result);
         }
         ?>
     </div>
@@ -170,87 +166,91 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
         ?>
     </div>
     <div class="main-header-opacity">
-        <div class="header-flex container">
-            <div class="navigation-line step-0">
-                <div class="navigation-line step-1">
-                    <div class="navigation-line step-2"></div>
-                </div>
-            </div>
-            <a class="" href="https://pv-foto.ru/">Фотопозитив</a>
-            <div class="header-flex__links">
-                <a class="link-join" href="https://pv-foto.ru/#forms">Принять участие</a>
-                <a class="" href="https://pv-foto.ru/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Галерея</a>
-                <a class="" href="https://pv-foto.ru/%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d1%82%d0%b5%d0%bb%d0%b8/">Победители</a>
-            </div>
-            <a href="http://peresvet-group.com/"><img
-                        src="<?php echo get_template_directory_uri(); ?>/assets/image/logo.png" alt="logo"></a>
-            <div class="header-flex__login">
-                <div class="">
-                    <?php
-                    if (is_user_logged_in()) {
-                        $avatar = get_avatar_url(get_current_user_id());
-                        echo "<a href='https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'><img src='" . $avatar . "' alt='avatar'></a>";
-                    } else {
-                        echo "<a href='https://pv-foto.ru/#forms'><i class='fas fa-user'></i></a>";
-                    }
-                    ?>
-                </div>
-                <?php
-                if (is_user_logged_in()) {
-                    $user_data = get_userdata(get_current_user_id());
-                    $username = $user_data->get('display_name');
-                    echo "<a href='https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'>" . $username . "</a>";
-                } else {
-                    echo "<a href='https://pv-foto.ru/#forms'>Логин</a>";
-                }
-                ?>
-            </div>
-            <div class="header-flex__burger">
-                <i class="fas fa-align-justify"></i>
-                <div class="burger-menu d-none">
-                    <?php
-                    if (is_user_logged_in()) {
-                        echo "<div class=''><a href='https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'>Личный кабинет</a></div>";
-                    } else {
-                        echo "<div class=''><a href='https://pv-foto.ru/#forms'>Войти</a></div>";
-                    }
-                    ?>
-                    <div class=""><a href="https://pv-foto.ru/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Галерея</a>
+        <div class="header-flex">
+            <div class="header-fixed">
+                <div class="container">
+                    <div class="header-logo">
+                        <a class="logo-text" href="https://pv-foto.ru/">Фотопозитив</a>
+                        <div class="header-logo-splitter"></div>
+                        <a class="logo-image" href="http://peresvet-group.com/" target="_blank">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/image/logo-image.svg"
+                                 alt="logo">
+                        </a>
                     </div>
-                    <div class=""><a
-                                href="https://pv-foto.ru/%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d1%82%d0%b5%d0%bb%d0%b8/">Победители</a>
+                    <div class="header-nav">
+                        <div class="link">
+                            <a class="" href="https://pv-foto.ru/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Смотреть
+                                фото</a>
+                            <div class="decoration"></div>
+                        </div>
+                        <div class="link">
+                            <a class=""
+                               href="https://pv-foto.ru/%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d1%82%d0%b5%d0%bb%d0%b8/">Победители</a>
+                            <div class="decoration"></div>
+                        </div>
                     </div>
-                    <?php
-                    if (is_user_logged_in()) {
-                        echo '<div class=""><a href="';
-                        echo wp_logout_url('https://pv-foto.ru/');
-                        echo '">Выход</a></div>';
-                    } else {
-                        echo "<div class=''><a href='https://pv-foto.ru/#forms'>Принять участие</a></div>";
-                    }
-                    ?>
+                    <div class="header-buttons">
+                        <?php if (!is_user_logged_in()) : ?>
+                            <div class="button-login">Войти</div>
+                            <div class="button-registration">Принять участие</div>
+                        <?php else: ?>
+                            <div class="">
+                                <?php
+                                if (is_user_logged_in()) {
+                                    $avatar = get_avatar_url(get_current_user_id());
+                                    echo "<a href='https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'><img src='" . $avatar . "' alt='avatar'></a>";
+                                } else {
+                                    echo "<a href='https://pv-foto.ru/#forms'><i class='fas fa-user'></i></a>";
+                                }
+                                ?>
+                            </div>
+                            <?php
+                            if (is_user_logged_in()) {
+                                $user_data = get_userdata(get_current_user_id());
+                                $username = $user_data->get('display_name');
+                                echo "<a href='https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/'>" . $username . "</a>";
+                            } else {
+                                echo "<a href='https://pv-foto.ru/#forms'>Логин</a>";
+                            }
+                            ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="header-burger">
+                        <i class="fas fa-align-justify"></i>
+                        <div class="burger-menu d-none">
+                            <a class="logo-image" href="http://peresvet-group.com/" target="_blank">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/image/logo-image.svg"
+                                     alt="logo">
+                            </a>
+                            <div class="header-nav">
+                                <div class="link">
+                                    <a class="" href="https://pv-foto.ru/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Смотреть
+                                        фото</a>
+                                    <div class="decoration"></div>
+                                </div>
+                                <div class="link">
+                                    <a class=""
+                                       href="https://pv-foto.ru/%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d1%82%d0%b5%d0%bb%d0%b8/">Победители</a>
+                                    <div class="decoration"></div>
+                                </div>
+                            </div>
+                            <?php if (is_user_logged_in()) : ?>
+                                <?php
+                                echo '<div class=""><a href="';
+                                echo wp_logout_url('https://pv-foto.ru/');
+                                echo '">Выход</a></div>';
+                                ?>
+                            <?php else : ?>
+                                <div class="header-buttons">
+                                    <a href="#" class="button-login">Войти</a>
+                                    <a href="#" class="button-registration">Принять участие</a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="header__video">
-            <?php
-            $page_title = 'Видео на главной странице';
-            $video_page = get_page_by_title($page_title);
-            // $facebook = strstr(strstr($vk_page->post_content, 'http'), '">', true);
-            print_r($video_page->post_content);
-            ?>
-            <!-- <div class="">
-                <i class="fas fa-play"></i>
-            </div> -->
-        </div>
-        <!-- <h2 class="header__h2"><span>50 000</span>рублей</h2> -->
-        <h2></h2>
-        <div class="navi-container flex-start">
-            <div class="navigation-line step-3">
-                <div class="navigation-line step-4"></div>
-            </div>
-        </div>
-        <!-- <p class="header__p">за фотопозитив!</p> -->
-        <p class="header__p"></p>
     </div>
+    <div id="line-box-block"></div>
 </header>

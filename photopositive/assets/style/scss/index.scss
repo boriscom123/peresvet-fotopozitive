@@ -1,10 +1,16 @@
-// sass --watch style/scss:style
 @import "variables";
 @import "basic";
 @import "navi-line";
 @import "header";
+@import "leaders";
+@import "page-video";
 @import "bunner";
-@import "steps";
-@import "forms";
+//@import "steps";
+//@import "forms";
+@import "leader-choice";
+@import "block-show-more";
+@import "main-projects";
+@import "join";
 @import "footer";
 @import "modal";
+@import "line";

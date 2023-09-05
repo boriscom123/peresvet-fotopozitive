@@ -1,5 +1,5 @@
 .modal {
-// Подложка будет занимать 100% площади экрана
+  // Подложка будет занимать 100% площади экрана
   position: fixed;
   top: 0;
   left: 0;
@@ -7,10 +7,10 @@
   right: 0;
   width: 100%;
   height: 100vh;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+  background: $modalBgColor;
   overflow-y: auto;
-  padding: 5vh 0 10vh;
+  padding: 12vh 0 12vh;
 
   .recover-password {
     width: #{calc(100% - 20px)};
@@ -61,7 +61,7 @@
         border: none;
         background-color: #ffffff;
         margin: 20px 0 0 0;
-        box-shadow: 5px 8px 9px 0px rgba(0,3,0,0.3);
+        box-shadow: 5px 8px 9px 0px rgba(0, 3, 0, 0.3);
         outline: none;
 
         &::-moz-placeholder {
@@ -109,6 +109,7 @@
     border-radius: 25px;
     position: relative;
     padding: 0 0 25px 0;
+
     > i {
       position: absolute;
       right: 10px;
@@ -135,6 +136,7 @@
         font-size: 30px;
       }
     }
+
     &-flex {
       width: 100%;
       max-width: 800px;
@@ -161,6 +163,7 @@
           max-width: 300px;
           margin: 0 auto 15px;
         }
+
         > h3 {
           text-align: center;
           max-width: 300px;
@@ -229,6 +232,7 @@
         > .error {
           box-shadow: 0px 0px 0px 3px rgba(255, 0, 0, 1);
         }
+
         > .ok {
           box-shadow: 0px 0px 0px 3px rgba(0, 255, 0, 1);
         }
@@ -330,13 +334,14 @@
           }
         }
       }
+
       .form__login {
         width: 50%;
         display: flex;
         flex-direction: column;
 
         @media (max-width: 650px) {
-            width: 90%;
+          width: 90%;
         }
 
         > h2 {
@@ -351,6 +356,7 @@
             font-size: 18px;
           }
         }
+
         > div {
           width: 95%;
           margin: 0 auto 20px;
@@ -409,12 +415,15 @@
             }
           }
         }
+
         > .error {
           box-shadow: 0px 0px 0px 3px rgba(255, 0, 0, 1);
         }
+
         > .ok {
           box-shadow: 0px 0px 0px 3px rgba(0, 255, 0, 1);
         }
+
         > p {
           width: 95%;
           margin: 0 auto;
@@ -422,15 +431,18 @@
           color: $fontColor;
           text-align: center;
           cursor: pointer;
+
           > a {
             font-size: 17px;
             color: $fontColor;
+
             &:hover {
               text-decoration: underline;
             }
           }
 
         }
+
         > button {
           height: 73px;
           width: 65%;
@@ -536,7 +548,7 @@
         border: none;
         background-color: #ffffff;
         margin: 20px auto 0 auto;
-        box-shadow: 5px 8px 9px 0px rgba(0,3,0,0.3);
+        box-shadow: 5px 8px 9px 0px rgba(0, 3, 0, 0.3);
         outline: none;
 
         &::-moz-placeholder {
@@ -568,6 +580,7 @@
         background-color: #ffffff;
         cursor: pointer;
       }
+
       > input[type=button] {
         width: 95%;
         max-width: 300px;
@@ -581,6 +594,7 @@
         background-color: #ffffff;
         cursor: pointer;
       }
+
       > button {
         width: 95%;
         max-width: 300px;
@@ -595,12 +609,341 @@
         cursor: pointer;
         outline: none;
       }
+
       > .error {
         box-shadow: 0px 0px 0px 3px rgba(255, 0, 0, 1);
       }
+
       > .ok {
         box-shadow: 0px 0px 0px 3px rgba(0, 255, 0, 1);
       }
     }
   }
+
+  .new-registration, .new-login {
+    max-height: calc(100% - 15vh);
+    width: #{calc(100% - 20px)};
+    max-width: 850px;
+    margin: 0 auto;
+    background-color: $bgColor;
+    border-radius: 25px;
+    position: relative;
+
+    @media (max-width: 799px) {
+      max-width: 450px;
+      padding: 70px 0 20px 0;
+    }
+
+    > i {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 2em;
+      color: $modalCloseElColor;
+      cursor: pointer;
+
+      &:hover {
+        color: $lineColorActive;
+      }
+    }
+
+    > .modal-close {
+      height: 32px;
+      width: 32px;
+      min-width: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 10;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      > img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+
+    > .modal-content {
+      display: flex;
+      padding: 0 20px;
+      gap: 20px;
+
+      @media (max-width: 799px) {
+        flex-direction: column;
+      }
+
+      > div {
+        width: 100%;
+        max-width: 50%;
+
+        @media (max-width: 799px) {
+          max-width: 100%;
+        }
+      }
+
+      > .image {
+        display: flex;
+        @media (max-width: 799px) {
+          border-bottom: 1px solid silver;
+        }
+
+        > img {
+          width: inherit;
+        }
+      }
+
+      > .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+
+        > .title {
+          color: $alterColor;
+          font-size: 40px;
+          font-weight: 900;
+
+          @media (max-width: 799px) {
+            max-width: calc(100% - 40px);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 32px;
+          }
+
+          @media (max-width: 450px) {
+            font-size: 30px;
+          }
+
+          @media (max-width: 425px) {
+            font-size: 28px;
+          }
+
+          @media (max-width: 400px) {
+            font-size: 26px;
+          }
+
+          @media (max-width: 375px) {
+            font-size: 24px;
+          }
+
+          @media (max-width: 350px) {
+            font-size: 22px;
+          }
+          @media (max-width: 330px) {
+            font-size: 20px;
+          }
+        }
+
+        > .content {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          > .text-ok {
+            margin: 20px 0;
+            font-size: 20px;
+            color: #3A3B43;
+
+            + button {
+              background-color: $alterColor;
+            }
+          }
+
+          > .alert {
+            color: $lineColorActive;
+            font-size: 14px;
+          }
+
+          > .transparent {
+            opacity: 0;
+          }
+
+          > .input {
+            height: 50px;
+            width: 100%;
+            border: 1px solid silver;
+            border-radius: 20px;
+            overflow: hidden;
+            opacity: 1;
+
+            > label {
+              height: 100%;
+              width: 100%;
+
+              > input {
+                height: 100%;
+                width: 100%;
+                text-align: center;
+                font-size: 20px;
+
+                &::placeholder {
+                  color: #9594A5;
+                }
+              }
+            }
+          }
+
+          > .hidden {
+            height: 0;
+            opacity: 0;
+          }
+
+          > .check-box {
+            display: flex;
+            gap: 10px;
+
+            > input {
+              display: none;
+
+              &:checked {
+                + .decoration {
+                  background-color: $alterColor;
+                }
+              }
+            }
+
+            > .decoration {
+              height: 20px;
+              width: 20px;
+              min-width: 20px;
+              border-radius: 5px;
+              border: 1px solid silver;
+              cursor: pointer;
+            }
+
+            > .text {
+              font-size: 14px;
+              color: $alterColor;
+              cursor: pointer;
+
+              > a {
+                text-decoration: underline;
+
+                &:hover {
+                  color: $lineColorActive;
+                }
+              }
+            }
+          }
+
+          > .button {
+            height: 50px;
+            width: 100%;
+            border-radius: 15px;
+            background-color: $lineColorActive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: $fontColor;
+            font-size: 24px;
+            font-weight: 900;
+
+            &:hover {
+              @include elHover($lineColorActive);
+            }
+          }
+
+          > .form-change {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            > .modal-link-switch {
+              font-size: 14px;
+              color: gray;
+              cursor: pointer;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+
+      > .modal-forget-content {
+        margin: 20px auto;
+        width: 100%;
+        max-width: 430px;
+
+        > h3 {
+          font-size: 28px;
+          color: $burgerBgColor;
+        }
+
+        > p {
+          margin: 20px 0;
+          font-size: 20px;
+          color: rgb(58, 59, 67);
+          font-weight: 600;
+        }
+
+        > .alert {
+          color: $lineColorActive;
+          font-size: 14px;
+        }
+
+        > .transparent {
+          opacity: 0;
+        }
+
+        > .input {
+          margin: 5px 0 10px 0;
+          height: 50px;
+          width: 100%;
+          border: 1px solid silver;
+          border-radius: 20px;
+          overflow: hidden;
+          opacity: 1;
+
+          > label {
+            height: 100%;
+            width: 100%;
+
+            > input {
+              height: 100%;
+              width: 100%;
+              text-align: center;
+              font-size: 20px;
+
+              &::placeholder {
+                color: #9594A5;
+              }
+            }
+          }
+        }
+
+        > .button {
+          height: 50px;
+          width: 100%;
+          border-radius: 15px;
+          background-color: $lineColorActive;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          color: $fontColor;
+          font-size: 24px;
+          font-weight: 900;
+
+          &:hover {
+            @include elHover($lineColorActive);
+          }
+        }
+
+      }
+    }
+  }
+
+
 }

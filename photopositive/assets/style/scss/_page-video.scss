@@ -1,0 +1,58 @@
+.page-video {
+  background-color: $modalCloseElColor;
+
+  > .container {
+    // height: 400px;
+    width: #{calc(100% - 60px)};
+    //max-width: 1000px;
+    margin: 0 auto 20px auto;
+    padding: 90px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 1px dashed grey;
+    position: relative;
+    z-index: 2;
+
+    > .wp-block-video {
+      height: 100%;
+      width: 100%;
+      -o-object-fit: contain;
+      object-fit: contain;
+
+      > video {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        object-fit: contain;
+      }
+    }
+
+    > div {
+      height: 80px;
+      width: 80px;
+      background-color: $fontColor;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        @include elHover(#aaaaaa);
+      }
+
+      &:active {
+        @include elActive(#aaaaaa);
+      }
+
+      > i {
+        font-size: 1.5em;
+        color: #2e2f79;
+        margin-left: 5px;
+      }
+    }
+  }
+
+}

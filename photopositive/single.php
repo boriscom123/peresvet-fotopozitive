@@ -206,6 +206,7 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
             </div>
         </div>
     </main>
+
     <div class="modal d-none" data-modal="join-pop">
 
         <div class="d-none">
@@ -276,7 +277,147 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
             </div>
         </div>
 
+        <div class="d-none">
+            <div class="reg-password-form">
+                <i class="far fa-times-circle close-fp"></i>
+                <h2>Для продолжения введите номер телефона</h2>
+                <p></p>
+                <form class="reg-form-password" action="" method="post">
+                    <input id="input-foget-tel" type="text" name="tel" value="" placeholder="Введите номер телефона"
+                           required>
+                    <button type="button" name="foget-password-submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="d-none">
+            <div class="new-registration">
+                <div class="modal-close">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/image/icon-close.svg" alt="icon-close">
+                </div>
+                <!--            <i class="far fa-times-circle close-new-registration"></i>-->
+                <div class="modal-content">
+                    <div class="image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/image/modal-image-new-registration.png"
+                             alt="modal-image-new-registration.png">
+                    </div>
+                    <div class="form">
+                        <h3 class="title">Получай деньги, <br>следуя за позитивом!</h3>
+                        <div class="content">
+                            <h6 class="alert transparent" id="modal-alert-registration">Пользователь с этим номером телефона уже существует</h6>
+                            <div class="input input-tel">
+                                <label>
+                                    <input type="text" placeholder="+7 (123) 456 78 90" id="modal-reg-input-tel">
+                                </label>
+                            </div>
+                            <div class="input input-pass hidden">
+                                <label>
+                                    <input type="text" placeholder="Введи пароль из смс" id="modal-reg-input-pass">
+                                </label>
+                            </div>
+                            <div class="check-box">
+                                <input id="modal-accept-politics" type="checkbox">
+                                <label for="modal-accept-politics" class="decoration"></label>
+                                <label for="modal-accept-politics" class="text">
+                                    Я согласен на обработку моих персональных данных согласно
+                                    <a href="<?php echo get_template_directory_uri(); ?>/privacy.pdf" target="_blank">политике конфиденциальности</a>
+                                </label>
+                            </div>
+                            <button class="button" type="button" id="modal-button-registration">Дальше</button>
+                            <div class="form-change">
+                                <div class="modal-link-switch" id="modal-button-switch-to-login">Уже зарегистрирован?</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-none">
+            <div class="new-login">
+                <div class="modal-close">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/image/icon-close.svg" alt="icon-close">
+                </div>
+                <div class="modal-content">
+                    <div class="image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/image/modal-image-new-login.png"
+                             alt="modal-image-new-registration.png">
+                    </div>
+                    <div class="form">
+                        <h3 class="title">Вход в личный <br>кабинет</h3>
+                        <div class="content">
+                            <h6 class="alert transparent" id="modal-alert-login">Пользователь с этим номером телефона уже существует</h6>
+                            <div class="input input-tel">
+                                <label>
+                                    <input type="text" placeholder="+7 (123) 456 78 90" id="modal-input-tel">
+                                </label>
+                            </div>
+                            <div class="input input-pass">
+                                <label>
+                                    <input type="text" placeholder="Введи пароль из смс" id="modal-input-pass">
+                                </label>
+                            </div>
+                            <button class="button" type="button" id="modal-button-login">Войти</button>
+                            <div class="form-change">
+                                <div class="modal-link-switch" id="modal-button-switch-to-forget">Забыли пароль?</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-none">
+            <div class="new-login">
+                <div class="modal-close">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/image/icon-close.svg" alt="icon-close">
+                </div>
+                <div class="modal-content">
+                    <div class="image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/image/modal-image-ok.png"
+                             alt="modal-image-ok.png">
+                    </div>
+                    <div class="form">
+                        <h3 class="title">Регистрация прошла успешно</h3>
+                        <div class="content">
+                            <p class="text-ok">
+                                Сохраните код из СМС — он является вашим паролем для входа. Вы можете изменить пароль в личном кабинете в любой момент.
+                            </p>
+                            <button class="button" type="button" id="modal-button-ok">Понятно</button>
+                            <button class="d-none" type="button" id="modal-button-ok-show"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-none">
+            <div class="new-login">
+                <div class="modal-close">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/image/icon-close.svg" alt="icon-close">
+                </div>
+                <div class="modal-content">
+                    <div class="modal-forget-content">
+                        <h3>
+                            Введите номер телефона, который вы использовали при регистрации
+                        </h3>
+                        <p>
+                            Вам придёт новый пароль в СМС. Используйте его для входа в личный кабинет
+                        </p>
+                        <h6 class="alert transparent" id="modal-alert-forget">Такой номер не зарегистрирован</h6>
+                        <div class="input input-tel">
+                            <label>
+                                <input type="text" placeholder="+7 (123) 456 78 90" id="modal-input-tel-forget">
+                            </label>
+                        </div>
+                        <button class="button" type="button" id="modal-button-forget">Продолжить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
     <?php
     wp_footer();
     ?>

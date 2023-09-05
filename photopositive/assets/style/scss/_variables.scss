@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
-$lineColorActive: #e00109; // Розовый цвет
+$lineColorActive: #e12846; // Розовый цвет
 $lineColor: #f6f6f6; // Серый цвет
 $bgColor: #ffffff; // Белый цвет
+$alterColor: rgba(39, 36, 93, 1);
+$modalBgColor: rgba(149, 148, 165, 0.9);
+$modalCloseElColor: rgba(39, 36, 93, 1);
+$burgerBgColor: rgba(40, 49, 115, 1);
 $fontFamily: 'Lato', sans-serif;
 $fontSize: 16px;
 $fontWeight: 300;
@@ -10,6 +14,9 @@ $fontColor: #ffffff;
 $border: 1px solid #ececec;
 $cartTitleBg: rgba(248, 243, 244, 1); // цвет для заголовка на странице корзина
 $shadow: 0px 10px 10px 10px rgba(0,3,0,0.2);
+$transition: 0.3s;
+$max-width: 1000px;
+$line-max-width: 1100px;
 
 @mixin elHover($_color) { // цвет при наведении
   background-color: darken($_color, 10%);
