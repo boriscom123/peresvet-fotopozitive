@@ -129,7 +129,6 @@ function showCoord() {
                 let elCurrentStep = currentCenter - (lineBox.children[i].getBoundingClientRect().top + window.scrollY - elGap);
                 // console.log('elCurrentStep', elCurrentStep);
                 lineBox.children[i].style.width = (elCurrentStep * elFillStep) + 'px';
-
             }
 
             // Если до блока еще не дошли - он должен быть пустым

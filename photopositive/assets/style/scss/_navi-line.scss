@@ -3,19 +3,27 @@
   box-shadow: 13px 22px 15px 0px #000300;
   border-radius: 3px;
 }
-@media (max-width: 319px) {.navigation-line {display: none;}}
+
+@media (max-width: 319px) {
+  .navigation-line {
+    display: none;
+  }
+}
+
 .navi-container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 10px 0 10px;
   display: flex;
 }
+
 .step-0 {
   height: 7px;
   width: 7px;
   margin: 0 10px 0 10px;
   position: relative;
 }
+
 .step-1 {
   position: absolute;
   height: 7px;
@@ -24,6 +32,7 @@
   top: 0;
   right: 0;
 }
+
 .step-2 {
   position: absolute;
   height: 7px;
@@ -31,12 +40,14 @@
   top: 0;
   left: 0;
 }
+
 .step-3 {
   height: 7px;
   width: 0px;
   max-width: 1100px;
   position: relative;
 }
+
 .step-4 {
   height: 0px;
   width: 7px;
@@ -44,6 +55,7 @@
   top: 0;
   right: 0px;
 }
+
 .step-5 {
   height: 7px;
   width: 0px;
@@ -52,6 +64,7 @@
   position: absolute;
   z-index: 0;
 }
+
 .line-5-gallery {
   height: 7px;
   width: 0px;
@@ -59,6 +72,7 @@
   margin: -10% 0 0 0;
   z-index: 0;
 }
+
 .line-5-project {
   height: 7px;
   width: 0px;
@@ -66,6 +80,7 @@
   margin: 0 0 0 0;
   z-index: 0;
 }
+
 .step-6 {
   height: 0px;
   width: 7px;
@@ -73,12 +88,14 @@
   top: 0;
   left: 0px;
 }
+
 .step-7 {
   height: 7px;
   width: 0px;
   max-width: 1100px;
   position: relative;
 }
+
 .line-7-gallery {
   height: 7px;
   width: 0px;
@@ -86,6 +103,7 @@
   position: absolute;
   margin: 10% 0 0 0;
 }
+
 .step-8 {
   height: 0px;
   width: 7px;
@@ -93,12 +111,14 @@
   top: 0;
   right: 0px;
 }
+
 .step-9 {
   height: 7px;
   width: 0px;
   max-width: 1100px;
   position: relative;
 }
+
 .step-10 {
   height: 0px;
   width: 7px;
@@ -106,12 +126,14 @@
   top: 0;
   left: 0px;
 }
+
 .step-11 {
   height: 7px;
   width: 0px;
   max-width: 1100px;
   position: relative;
 }
+
 .step-12 {
   height: 0px;
   width: 7px;
@@ -119,12 +141,14 @@
   top: 0;
   right: 0px;
 }
+
 .step-13 {
   height: 7px;
   width: 0px;
   max-width: 1100px;
   position: relative;
 }
+
 .step-14 {
   height: 0px;
   width: 7px;
@@ -132,12 +156,14 @@
   top: 0;
   left: 0px;
 }
+
 .step-15 {
   height: 7px;
   width: 0px;
   max-width: 1100px;
   position: relative;
 }
+
 .step-16 {
   height: 0px;
   max-height: 204px;
@@ -146,12 +172,14 @@
   top: 0;
   right: 0px;
 }
+
 .step-17 {
   height: 7px;
   width: 0px;
   max-width: 550px;
   position: relative;
 }
+
 .step-18 {
   height: 0px;
   max-height: 107px;
@@ -160,6 +188,7 @@
   top: 0;
   left: 0;
 }
+
 .step-19 {
   height: 7px;
   width: 20%;
@@ -167,8 +196,11 @@
   top: 40px;
   left: 40%;
   z-index: 1;
-  @media (max-width: 650px) { display: none;}
+  @media (max-width: 650px) {
+    display: none;
+  }
 }
+
 .step-20 {
   height: 47px;
   width: 7px;
@@ -176,17 +208,23 @@
   bottom: 0;
   left: 0;
   z-index: 1;
-  @media (max-width: 650px) { display: none;}
+  @media (max-width: 650px) {
+    display: none;
+  }
 }
-.step-21{
+
+.step-21 {
   height: 116px;
   width: 7px;
   position: absolute;
   bottom: 0;
   right: 0;
   z-index: 1;
-  @media (max-width: 650px) { display: none;}
+  @media (max-width: 650px) {
+    display: none;
+  }
 }
+
 .step-22 {
   height: 7px;
   width: 20%;
@@ -194,7 +232,9 @@
   top: -70px;
   left: 40%;
   z-index: 0;
-  @media (max-width: 650px) { display: none;}
+  @media (max-width: 650px) {
+    display: none;
+  }
 }
 
 .join__step-1 {
@@ -205,6 +245,7 @@
   left: 52%;
   z-index: 1;
 }
+
 .join__step-2 {
   height: 7px;
   width: #{calc(3% + 7px)};;;
@@ -213,6 +254,7 @@
   left: 49%;
   z-index: 2;
 }
+
 .join__step-3 {
   height: 35px;
   width: 7px;
@@ -220,6 +262,7 @@
   top: 100%;
   left: 49%;
 }
+
 .line-steps {
   height: 7px;
   width: 1080px;
@@ -229,6 +272,7 @@
   margin: 10% 0 0 0;
   z-index: -1;
 }
+
 .gallery-step-0 {
   // горизонтальная <-
   position: absolute;
@@ -237,6 +281,7 @@
   top: 0;
   right: 0;
 }
+
 .gallery-step-1 {
   // вертикальная <-
   position: absolute;
@@ -245,6 +290,7 @@
   top: 0;
   left: 0;
 }
+
 .gallery-step-2 {
   // горизонтальная ->
   position: absolute;
@@ -253,6 +299,7 @@
   top: 0;
   left: 0;
 }
+
 .gallery-step-3 {
   // вертикальная ->
   position: absolute;
@@ -260,4 +307,8 @@
   width: 7px;
   top: 0;
   right: 0;
+}
+
+.step-end {
+  transition: $transition;
 }
