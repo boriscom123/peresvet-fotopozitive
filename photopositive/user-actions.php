@@ -78,7 +78,47 @@ $response = [];
 if (isset($_POST)) {
     $response['request'] = $_POST;
 
-    if (isset($_POST['user_id'])) {
+    if (isset($_POST['action'])) {
+        if ($_POST['action'] === 'like') {
+            if (isset($_POST['user_id']) && isset($_POST['post_id'])) {
+                $user_id = $_POST['user_id'];
+                $post_id = $_POST['post_id'];
+
+                if (is_numeric($post_id)) {
+                    // проверяем наличие такой записи в БД и если нет - добавляем
+                    $user_like = $wpdb->get_results("SELECT COUNT(id) as user_like FROM wp_foto_likes WHERE post_id=$post_id AND user_id=$user_id");
+                    if ($user_like[0]->user_like === '0') {
+                        $table = 'wp_foto_likes';
+                        $data = array('user_id' => $user_id, 'post_id' => $post_id);
+                        $format = array("%d", "%d");
+                        $likes = $wpdb->insert($table, $data, $format);
+
+                        $response['action'] = 'like';
+                        $response['result'] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    if (isset($_POST['action'])) {
+        if ($_POST['action'] === 'dislike') {
+            if (isset($_POST['user_id']) && isset($_POST['post_id'])) {
+                $user_id = $_POST['user_id'];
+                $post_id = $_POST['post_id'];
+
+                if (is_numeric($post_id)) {
+                    $dislikes = $wpdb->query("DELETE FROM wp_foto_likes WHERE post_id=$post_id AND user_id=$user_id");
+
+                    $response['action'] = 'dislike';
+                    $response['result'] = true;
+                }
+            }
+
+        }
+    }
+
+    if (isset($_POST['user_id']) && !isset($_POST['action'])) {
         $like_user_id = $_POST['user_id'];
         if (is_numeric($like_user_id)) {
             if (isset($_POST['dislike'])) {

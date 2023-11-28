@@ -96,9 +96,9 @@ get_header();
         <div class="bunner-flex">
             <div class="bunner__content">
                 <?php
-                echo do_shortcode('[supsystic-slider id=2 position="center"]');
+                // echo do_shortcode('[supsystic-slider id=2 position="center"]');
                 // echo do_shortcode('[nextcodeslider id="1"]'); // видео слайдер
-                // echo do_shortcode('[smartslider3 slider="2"]');
+               echo do_shortcode('[smartslider3 slider="4"]');
 
                 /*<img src="<?php echo get_template_directory_uri(); ?>/assets/image/banner.jpg" alt="Изображение">*/
                 ?>
@@ -298,23 +298,23 @@ get_header();
                     if ($user_like[0]->user_like === '0') {
                         ?>
                         <div class="">
-                            <form class="" action="" method="post">
+                            <div>
                                 <button class="d-none" type="submit" name="like" value="<?php echo $post_id; ?>"><i
                                             class="fas fa-heart"></i></button>
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <button type="submit" name="like"><i class="far fa-heart"></i></button>
-                            </form>
+                            </div>
                         </div>
                         <?php
                     } else {
                         ?>
                         <div class="">
-                            <form class="" action="" method="post">
+                            <div>
                                 <button class="d-none" type="submit" name="dislike" value="<?php echo $post_id; ?>"><i
                                             class="far fa-heart"></i></button>
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <button type="submit" name="dislike"><i class="fas fa-heart"></i></button>
-                            </form>
+                            </div>
                         </div>
                         <?php
                     }

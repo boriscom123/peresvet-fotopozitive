@@ -546,23 +546,23 @@ get_header();
                     if ($user_like[0]->user_like === '0') {
                         ?>
                         <div class="">
-                            <form class="" action="" method="post">
+                            <div>
                                 <button class="d-none" type="submit" name="like" value="<?php echo $post_id; ?>"><i
                                             class="fas fa-heart"></i></button>
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <button type="submit" name="like"><i class="far fa-heart"></i></button>
-                            </form>
+                            </div>
                         </div>
                         <?php
                     } else {
                         ?>
                         <div class="">
-                            <form class="" action="" method="post">
+                            <div>
                                 <button class="d-none" type="submit" name="dislike" value="<?php echo $post_id; ?>"><i
                                             class="far fa-heart"></i></button>
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <button type="submit" name="dislike"><i class="fas fa-heart"></i></button>
-                            </form>
+                            </div>
                         </div>
                         <?php
                     }
