@@ -173,6 +173,7 @@ function photopositive_scripts()
 
     /** Обновление подключения стилей - все в 1 файл независимо от страницы */
     wp_enqueue_style('photopositive-index', get_template_directory_uri() . '/assets/style/index.css', array(), _S_VERSION);
+    wp_enqueue_style('photopositive-index', get_template_directory_uri() . '/assets/style/main.css', array(), _S_VERSION);
 
     wp_enqueue_style('photopositive-style', get_stylesheet_uri(), array(), _S_VERSION);
     /** wp_enqueue_style( 'photopositive-photo', get_template_directory_uri().'/assets/style/photo.css', array(), _S_VERSION ); */
