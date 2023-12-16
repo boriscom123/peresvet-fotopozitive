@@ -164,6 +164,46 @@
           }
         }
 
+        > .header-nav-exit {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 5px;
+
+          &:hover {
+            cursor: pointer;
+
+            > .decoration {
+              width: 100%;
+            }
+          }
+
+          > a {
+            margin: 7px 0 0 0;
+            font-size: 18px;
+            font-weight: 400;
+            color: $fontColor;
+            text-align: center;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+
+
+            @media (max-width: 1000px) {
+              font-size: 16px;
+            }
+            @media (max-width: 900px) {
+              font-size: 14px;
+            }
+          }
+
+          > .decoration {
+            height: 2px;
+            width: 0;
+            background-color: $lineColor;
+          }
+        }
+
         > .header-buttons {
           display: flex;
           align-items: center;
@@ -362,6 +402,47 @@
                   width: 0;
                   background-color: $lineColor;
                 }
+              }
+            }
+
+            > .header-nav-exit {
+              margin: 25px 0 0 0;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 5px;
+              padding: 0 10px;
+
+              &:hover {
+                cursor: pointer;
+
+                > .decoration {
+                  width: 100%;
+                }
+              }
+
+              > a {
+                margin: 7px 0 0 0;
+                font-size: 18px;
+                font-weight: 400;
+                color: $fontColor;
+                text-align: center;
+                letter-spacing: 0.01em;
+                white-space: nowrap;
+
+
+                @media (max-width: 1000px) {
+                  font-size: 16px;
+                }
+                @media (max-width: 900px) {
+                  font-size: 14px;
+                }
+              }
+
+              > .decoration {
+                height: 2px;
+                width: 0;
+                background-color: $lineColor;
               }
             }
 

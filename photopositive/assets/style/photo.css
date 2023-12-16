@@ -2,6 +2,12 @@
 * {
   margin: 0;
   padding: 0;
+  outline: none;
+  appearance: none;
+  border: none;
+  transition: 0.3s;
+  line-height: 100%;
+  box-sizing: border-box;
 }
 
 html {
@@ -25,12 +31,8 @@ a {
   text-decoration: none;
 }
 
-input, textarea {
-  -webkit-appearance: none;
-}
-
 .container {
-  max-width: 1300px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -86,10 +88,10 @@ input, textarea {
   right: 0;
   width: 100%;
   height: 100vh;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+  background: rgba(149, 148, 165, 0.9);
   overflow-y: auto;
-  padding: 5vh 0 10vh;
+  padding: 12vh 0 12vh;
 }
 .modal .recover-password {
   width: calc(100% - 20px);
@@ -130,7 +132,7 @@ input, textarea {
 }
 .modal .recover-password > form > input {
   width: calc(100% - 10px);
-  max-width: calc(380px - 10px);
+  max-width: 370px;
   height: 40px;
   padding-left: 10px;
   border: none;
@@ -305,10 +307,10 @@ input, textarea {
   }
 }
 .modal .join-form-pop-flex .form__reg > .error {
-  box-shadow: 0px 0px 0px 3px red;
+  box-shadow: 0px 0px 0px 3px rgb(255, 0, 0);
 }
 .modal .join-form-pop-flex .form__reg > .ok {
-  box-shadow: 0px 0px 0px 3px lime;
+  box-shadow: 0px 0px 0px 3px rgb(0, 255, 0);
 }
 .modal .join-form-pop-flex .form__reg_pass {
   max-width: 95%;
@@ -489,10 +491,10 @@ input, textarea {
   }
 }
 .modal .join-form-pop-flex .form__login > .error {
-  box-shadow: 0px 0px 0px 3px red;
+  box-shadow: 0px 0px 0px 3px rgb(255, 0, 0);
 }
 .modal .join-form-pop-flex .form__login > .ok {
-  box-shadow: 0px 0px 0px 3px lime;
+  box-shadow: 0px 0px 0px 3px rgb(0, 255, 0);
 }
 .modal .join-form-pop-flex .form__login > p {
   width: 95%;
@@ -594,7 +596,7 @@ input, textarea {
 }
 .modal .reg-password-form > form > input {
   width: 95%;
-  max-width: calc(380px - 10px);
+  max-width: 370px;
   height: 40px;
   padding-left: 10px;
   border: none;
@@ -656,10 +658,300 @@ input, textarea {
   outline: none;
 }
 .modal .reg-password-form > form > .error {
-  box-shadow: 0px 0px 0px 3px red;
+  box-shadow: 0px 0px 0px 3px rgb(255, 0, 0);
 }
 .modal .reg-password-form > form > .ok {
-  box-shadow: 0px 0px 0px 3px lime;
+  box-shadow: 0px 0px 0px 3px rgb(0, 255, 0);
+}
+.modal .new-registration, .modal .new-login {
+  max-height: calc(100% - 15vh);
+  width: calc(100% - 20px);
+  max-width: 850px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 25px;
+  position: relative;
+}
+@media (max-width: 799px) {
+  .modal .new-registration, .modal .new-login {
+    max-width: 450px;
+    padding: 70px 0 20px 0;
+  }
+}
+.modal .new-registration > i, .modal .new-login > i {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 2em;
+  color: rgb(39, 36, 93);
+  cursor: pointer;
+}
+.modal .new-registration > i:hover, .modal .new-login > i:hover {
+  color: #e12846;
+}
+.modal .new-registration > .modal-close, .modal .new-login > .modal-close {
+  height: 32px;
+  width: 32px;
+  min-width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+  cursor: pointer;
+}
+.modal .new-registration > .modal-close:hover, .modal .new-login > .modal-close:hover {
+  transform: scale(1.1);
+}
+.modal .new-registration > .modal-close > img, .modal .new-login > .modal-close > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.modal .new-registration > .modal-content, .modal .new-login > .modal-content {
+  display: flex;
+  padding: 0 20px;
+  gap: 20px;
+}
+@media (max-width: 799px) {
+  .modal .new-registration > .modal-content, .modal .new-login > .modal-content {
+    flex-direction: column;
+  }
+}
+.modal .new-registration > .modal-content > div, .modal .new-login > .modal-content > div {
+  width: 100%;
+  max-width: 50%;
+}
+@media (max-width: 799px) {
+  .modal .new-registration > .modal-content > div, .modal .new-login > .modal-content > div {
+    max-width: 100%;
+  }
+}
+.modal .new-registration > .modal-content > .image, .modal .new-login > .modal-content > .image {
+  display: flex;
+}
+@media (max-width: 799px) {
+  .modal .new-registration > .modal-content > .image, .modal .new-login > .modal-content > .image {
+    border-bottom: 1px solid silver;
+  }
+}
+.modal .new-registration > .modal-content > .image > img, .modal .new-login > .modal-content > .image > img {
+  width: inherit;
+}
+.modal .new-registration > .modal-content > .form, .modal .new-login > .modal-content > .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.modal .new-registration > .modal-content > .form > .title, .modal .new-login > .modal-content > .form > .title {
+  color: rgb(39, 36, 93);
+  font-size: 40px;
+  font-weight: 900;
+}
+@media (max-width: 799px) {
+  .modal .new-registration > .modal-content > .form > .title, .modal .new-login > .modal-content > .form > .title {
+    max-width: calc(100% - 40px);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 32px;
+  }
+}
+@media (max-width: 450px) {
+  .modal .new-registration > .modal-content > .form > .title, .modal .new-login > .modal-content > .form > .title {
+    font-size: 30px;
+  }
+}
+@media (max-width: 425px) {
+  .modal .new-registration > .modal-content > .form > .title, .modal .new-login > .modal-content > .form > .title {
+    font-size: 28px;
+  }
+}
+@media (max-width: 400px) {
+  .modal .new-registration > .modal-content > .form > .title, .modal .new-login > .modal-content > .form > .title {
+    font-size: 26px;
+  }
+}
+@media (max-width: 375px) {
+  .modal .new-registration > .modal-content > .form > .title, .modal .new-login > .modal-content > .form > .title {
+    font-size: 24px;
+  }
+}
+@media (max-width: 350px) {
+  .modal .new-registration > .modal-content > .form > .title, .modal .new-login > .modal-content > .form > .title {
+    font-size: 22px;
+  }
+}
+@media (max-width: 330px) {
+  .modal .new-registration > .modal-content > .form > .title, .modal .new-login > .modal-content > .form > .title {
+    font-size: 20px;
+  }
+}
+.modal .new-registration > .modal-content > .form > .content, .modal .new-login > .modal-content > .form > .content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modal .new-registration > .modal-content > .form > .content > .text-ok, .modal .new-login > .modal-content > .form > .content > .text-ok {
+  margin: 20px 0;
+  font-size: 20px;
+  color: #3A3B43;
+}
+.modal .new-registration > .modal-content > .form > .content > .text-ok + button, .modal .new-login > .modal-content > .form > .content > .text-ok + button {
+  background-color: rgb(39, 36, 93);
+}
+.modal .new-registration > .modal-content > .form > .content > .alert, .modal .new-login > .modal-content > .form > .content > .alert {
+  color: #e12846;
+  font-size: 14px;
+}
+.modal .new-registration > .modal-content > .form > .content > .transparent, .modal .new-login > .modal-content > .form > .content > .transparent {
+  opacity: 0;
+}
+.modal .new-registration > .modal-content > .form > .content > .input, .modal .new-login > .modal-content > .form > .content > .input {
+  height: 50px;
+  width: 100%;
+  border: 1px solid silver;
+  border-radius: 20px;
+  overflow: hidden;
+  opacity: 1;
+}
+.modal .new-registration > .modal-content > .form > .content > .input > label, .modal .new-login > .modal-content > .form > .content > .input > label {
+  height: 100%;
+  width: 100%;
+}
+.modal .new-registration > .modal-content > .form > .content > .input > label > input, .modal .new-login > .modal-content > .form > .content > .input > label > input {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+.modal .new-registration > .modal-content > .form > .content > .input > label > input::placeholder, .modal .new-login > .modal-content > .form > .content > .input > label > input::placeholder {
+  color: #9594A5;
+}
+.modal .new-registration > .modal-content > .form > .content > .hidden, .modal .new-login > .modal-content > .form > .content > .hidden {
+  height: 0;
+  opacity: 0;
+}
+.modal .new-registration > .modal-content > .form > .content > .check-box, .modal .new-login > .modal-content > .form > .content > .check-box {
+  display: flex;
+  gap: 10px;
+}
+.modal .new-registration > .modal-content > .form > .content > .check-box > input, .modal .new-login > .modal-content > .form > .content > .check-box > input {
+  display: none;
+}
+.modal .new-registration > .modal-content > .form > .content > .check-box > input:checked + .decoration, .modal .new-login > .modal-content > .form > .content > .check-box > input:checked + .decoration {
+  background-color: rgb(39, 36, 93);
+}
+.modal .new-registration > .modal-content > .form > .content > .check-box > .decoration, .modal .new-login > .modal-content > .form > .content > .check-box > .decoration {
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  border-radius: 5px;
+  border: 1px solid silver;
+  cursor: pointer;
+}
+.modal .new-registration > .modal-content > .form > .content > .check-box > .text, .modal .new-login > .modal-content > .form > .content > .check-box > .text {
+  font-size: 14px;
+  color: rgb(39, 36, 93);
+  cursor: pointer;
+}
+.modal .new-registration > .modal-content > .form > .content > .check-box > .text > a, .modal .new-login > .modal-content > .form > .content > .check-box > .text > a {
+  text-decoration: underline;
+}
+.modal .new-registration > .modal-content > .form > .content > .check-box > .text > a:hover, .modal .new-login > .modal-content > .form > .content > .check-box > .text > a:hover {
+  color: #e12846;
+}
+.modal .new-registration > .modal-content > .form > .content > .button, .modal .new-login > .modal-content > .form > .content > .button {
+  height: 50px;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #e12846;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 900;
+}
+.modal .new-registration > .modal-content > .form > .content > .button:hover, .modal .new-login > .modal-content > .form > .content > .button:hover {
+  background-color: #bc1a34;
+}
+.modal .new-registration > .modal-content > .form > .content > .form-change, .modal .new-login > .modal-content > .form > .content > .form-change {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.modal .new-registration > .modal-content > .form > .content > .form-change > .modal-link-switch, .modal .new-login > .modal-content > .form > .content > .form-change > .modal-link-switch {
+  font-size: 14px;
+  color: gray;
+  cursor: pointer;
+}
+.modal .new-registration > .modal-content > .form > .content > .form-change > .modal-link-switch:hover, .modal .new-login > .modal-content > .form > .content > .form-change > .modal-link-switch:hover {
+  text-decoration: underline;
+}
+.modal .new-registration > .modal-content > .modal-forget-content, .modal .new-login > .modal-content > .modal-forget-content {
+  margin: 20px auto;
+  width: 100%;
+  max-width: 430px;
+}
+.modal .new-registration > .modal-content > .modal-forget-content > h3, .modal .new-login > .modal-content > .modal-forget-content > h3 {
+  font-size: 28px;
+  color: rgb(40, 49, 115);
+}
+.modal .new-registration > .modal-content > .modal-forget-content > p, .modal .new-login > .modal-content > .modal-forget-content > p {
+  margin: 20px 0;
+  font-size: 20px;
+  color: rgb(58, 59, 67);
+  font-weight: 600;
+}
+.modal .new-registration > .modal-content > .modal-forget-content > .alert, .modal .new-login > .modal-content > .modal-forget-content > .alert {
+  color: #e12846;
+  font-size: 14px;
+}
+.modal .new-registration > .modal-content > .modal-forget-content > .transparent, .modal .new-login > .modal-content > .modal-forget-content > .transparent {
+  opacity: 0;
+}
+.modal .new-registration > .modal-content > .modal-forget-content > .input, .modal .new-login > .modal-content > .modal-forget-content > .input {
+  margin: 5px 0 10px 0;
+  height: 50px;
+  width: 100%;
+  border: 1px solid silver;
+  border-radius: 20px;
+  overflow: hidden;
+  opacity: 1;
+}
+.modal .new-registration > .modal-content > .modal-forget-content > .input > label, .modal .new-login > .modal-content > .modal-forget-content > .input > label {
+  height: 100%;
+  width: 100%;
+}
+.modal .new-registration > .modal-content > .modal-forget-content > .input > label > input, .modal .new-login > .modal-content > .modal-forget-content > .input > label > input {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+.modal .new-registration > .modal-content > .modal-forget-content > .input > label > input::placeholder, .modal .new-login > .modal-content > .modal-forget-content > .input > label > input::placeholder {
+  color: #9594A5;
+}
+.modal .new-registration > .modal-content > .modal-forget-content > .button, .modal .new-login > .modal-content > .modal-forget-content > .button {
+  height: 50px;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #e12846;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 900;
+}
+.modal .new-registration > .modal-content > .modal-forget-content > .button:hover, .modal .new-login > .modal-content > .modal-forget-content > .button:hover {
+  background-color: #bc1a34;
 }
 
 .main-content {

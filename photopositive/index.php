@@ -617,7 +617,7 @@ get_header();
 
     <div class="block-show-more">
         <?php if (is_user_logged_in()): ?>
-                <a href="https://pv-foto.ru/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Добавить работу</a>
+                <a href="/личный-кабинет/">Добавить работу</a>
         <?php else: ?>
                 <a href="#" class="join-pop">Добавить работу</a>
         <?php endif; ?>

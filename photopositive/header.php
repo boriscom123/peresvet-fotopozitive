@@ -233,13 +233,22 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
                                        href="https://pv-foto.ru/%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d1%82%d0%b5%d0%bb%d0%b8/">Победители</a>
                                     <div class="decoration"></div>
                                 </div>
+                                <div class="link">
+                                    <a class=""
+                                       href="/личный-кабинет/">Личный кабинет</a>
+                                    <div class="decoration"></div>
+                                </div>
                             </div>
                             <?php if (is_user_logged_in()) : ?>
-                                <?php
-                                echo '<div class=""><a href="';
-                                echo wp_logout_url('https://pv-foto.ru/');
-                                echo '">Выход</a></div>';
-                                ?>
+                                <div class="header-nav-exit">
+                                    <a href="<?php echo wp_logout_url('https://pv-foto.ru/'); ?>">Выход</a>
+                                    <div class="decoration"></div>
+                                </div>
+<!--                                --><?php
+//                                echo '<div class=""><a href="';
+//                                echo wp_logout_url('https://pv-foto.ru/');
+//                                echo '">Выход</a></div>';
+//                                ?>
                             <?php else : ?>
                                 <div class="header-buttons">
                                     <a href="#" class="button-login">Войти</a>
