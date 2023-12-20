@@ -1,16 +1,14 @@
 .page-video {
   background-color: $modalCloseElColor;
+  overflow: hidden;
 
   > .container {
-    // height: 400px;
     width: #{calc(100% - 60px)};
-    //max-width: 1000px;
     margin: 0 auto 20px auto;
     padding: 90px 0 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    // border: 1px dashed grey;
     position: relative;
     z-index: 2;
 

@@ -546,23 +546,23 @@ get_header();
                     if ($user_like[0]->user_like === '0') {
                         ?>
                         <div class="">
-                            <form class="" action="" method="post">
+                            <div>
                                 <button class="d-none" type="submit" name="like" value="<?php echo $post_id; ?>"><i
                                             class="fas fa-heart"></i></button>
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <button type="submit" name="like"><i class="far fa-heart"></i></button>
-                            </form>
+                            </div>
                         </div>
                         <?php
                     } else {
                         ?>
                         <div class="">
-                            <form class="" action="" method="post">
+                            <div>
                                 <button class="d-none" type="submit" name="dislike" value="<?php echo $post_id; ?>"><i
                                             class="far fa-heart"></i></button>
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <button type="submit" name="dislike"><i class="fas fa-heart"></i></button>
-                            </form>
+                            </div>
                         </div>
                         <?php
                     }
@@ -617,7 +617,7 @@ get_header();
 
     <div class="block-show-more">
         <?php if (is_user_logged_in()): ?>
-                <a href="https://pv-foto.ru/%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f/">Добавить работу</a>
+                <a href="/личный-кабинет/">Добавить работу</a>
         <?php else: ?>
                 <a href="#" class="join-pop">Добавить работу</a>
         <?php endif; ?>

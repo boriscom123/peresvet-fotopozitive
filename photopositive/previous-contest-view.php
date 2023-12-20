@@ -1,15 +1,12 @@
 <?php
 /**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Template Name: ByNextPr - Страница отображения работ завершенного конкурса
  *
  * @package Photopositive
  */
-
 get_header();
 ?>
-    <main class="main-leaders">
+    <main class="page-previous-contest-view">
         <?php $cat = get_the_category(); ?>
         <h1><?php echo $cat['0']->name; ?></h1>
         <div class="main-leaders__flex">
@@ -59,51 +56,51 @@ get_header();
                             $user_like = $wpdb->get_results("SELECT COUNT(id) as user_like FROM wp_foto_likes WHERE post_id=$post_id AND user_id=$user_id");
                             // print_r($user_like);
                             // echo get_permalink();
-                            if (is_user_logged_in()) {
-                                // если пользователь залогинен - есть возможность поставить лайк
-                                if ($user_like[0]->user_like === '0') {
-                                    ?>
+                            if (is_user_logged_in()) : ?>
+                                <?php /** Если пользователь авторизирован - есть возможность поставить лайк */ ?>
+                                <?php if ($user_like[0]->user_like === '0') : ?>
                                     <div class="">
                                         <div class="">
-                                            <button class="d-none" type="submit" name="like"
-                                                    value="<?php echo $post_id; ?>"><i class="fas fa-heart"></i>
+                                            <button class="d-none"
+                                                    type="submit"
+                                                    name="like"
+                                                    value="<?php echo $post_id; ?>">
+                                                <i class="fas fa-heart"></i>
                                             </button>
                                             <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                             <button type="submit" name="like"><i class="far fa-heart"></i></button>
                                         </div>
                                     </div>
-                                    <?php
-                                } else {
-                                    ?>
+                                <?php else : ?>
                                     <div class="">
                                         <div class="">
-                                            <button class="d-none" type="submit" name="dislike"
-                                                    value="<?php echo $post_id; ?>"><i class="far fa-heart"></i>
+                                            <button class="d-none"
+                                                    type="submit"
+                                                    name="dislike"
+                                                    value="<?php echo $post_id; ?>">
+                                                <i class="far fa-heart"></i>
                                             </button>
                                             <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                             <button type="submit" name="dislike"><i class="fas fa-heart"></i></button>
                                         </div>
                                     </div>
-                                    <?php
-                                }
-                            } else {
-                                // пользователь не залогинен - при нажатии на сердечко показываем окно регистрации
-                                ?>
+                                <?php endif; ?>
+                            <?php else : ?>
+                                <?php /** Если пользователь не авторизирован - при нажатии на сердечко показываем окно регистрации */ ?>
                                 <div class="">
                                     <div class="">
-                                        <button class="d-none join-pop" type="submit" name="like" value=""><i
-                                                    class="fas fa-heart"></i></button>
+                                        <button class="d-none join-pop"
+                                                type="submit" name="like"
+                                                value="">
+                                            <i class="fas fa-heart"></i></button>
                                         <button type="submit" name="like"><i class="far fa-heart"></i></button>
                                     </div>
                                 </div>
-                                <?php
-                            }
-                            ?>
+                            <?php endif; ?>
                             <p><?php echo $likes[0]->likes; ?></p>
                         </div>
                     </div>
                     <?php
-                    // wp_reset_postdata();
                     $leaders_limit--;
                     if ($leaders_limit == 0) {
                         break;
@@ -111,25 +108,18 @@ get_header();
                 }
             }
 
-
             ?>
 
         </div>
 
     </main>
 
-    <div class="join">
-        <div class="join__content">
-            <?php
-            // если пользователь залогинен - отправляем на страницу загрузка фотографии
-            if (is_user_logged_in()) { // проверяем зарегистринованный это пользователь или нет
-                echo "<form action='https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/' method='post' id='go-to-add-foto'></form>";
-                echo "<button type='submit' name='go-to-add-foto' form='go-to-add-foto' value='3'>Добавить работу</button>";
-            } else {
-                echo "<div class='button show-join-pop'>Принять участие</div>";
-            }
-            ?>
-        </div>
+    <div class="block-show-more">
+        <?php if (is_user_logged_in()): ?>
+            <a href="/личный-кабинет/">Добавить работу</a>
+        <?php else: ?>
+            <a href="#" class="join-pop">Добавить работу</a>
+        <?php endif; ?>
     </div>
 
 <?php

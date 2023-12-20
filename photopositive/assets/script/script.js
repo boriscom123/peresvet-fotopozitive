@@ -775,67 +775,105 @@ addEventListener("resize", function () {
 }, false); // активность после изменения размера страницы
 
 function chHeart(el) {
-    console.log('Нажали на сердечко', el);
-    el.preventDefault();
+    // console.log('Нажали на сердечко', el);
 
     let formData = new FormData(); // создаём объект, по желанию берём данные формы <form>
     if (el.children[0].children[0].name == 'dislike') {
         // console.log('Диз лайкаем');
-        formData.append('dislike', el.children[0].children[0].value); // добавляем поле post_id с данными из кнопки
-        formData.append('user_id', el.children[0].children[1].value); // добавляем поле user_id с данными из скратого input
+        formData.set('action', 'dislike');
+        formData.set('post_id', el.children[0].children[0].value); // добавляем поле post_id с данными из кнопки
+        formData.set('user_id', el.children[0].children[1].value); // добавляем поле user_id с данными из скрытого input
 
     } else if (el.children[0].children[0].name == 'like') {
         // console.log('Лайкаем');
-        formData.append('like', el.children[0].children[0].value); // добавляем поле post_id с данными из кнопки
-        formData.append('user_id', el.children[0].children[1].value); // добавляем поле user_id с данными из скратого input
+        formData.set('action', 'like');
+        formData.set('post_id', el.children[0].children[0].value); // добавляем поле post_id с данными из кнопки
+        formData.set('user_id', el.children[0].children[1].value); // добавляем поле user_id с данными из скрытого input
 
     } else {
         // console.log('Непонятно');
     }
 
-    let likeRequest = new XMLHttpRequest();
+    let url = document.location.protocol + '//' + document.location.host + '/ajax/';
     let method = 'POST';
-    let url = 'https://pv-foto.ru/ajax/'
-    likeRequest.open(method, url); // подготавливаем запрос
-    likeRequest.send(formData); // посылаем запрос
-
-    likeRequest.onload = function () {
-        if (likeRequest.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
-            // console.log(`Ошибка ${likeRequest.status}: ${likeRequest.statusText}`); // Например, 404: Not Found
-        } else { // если всё прошло гладко, выводим результат
-            // console.log(`Готово, получили ${likeRequest.response.length} байт`); // response -- это ответ сервера
-            // console.log('Полученный ответ: ', likeRequest.response);
-            // после удачного ответа от сервера - меняем стили для кнопок
-            if (likeRequest.response[0] == 'l') {
-                // console.log("Меняем стили с лайка на дизлайк");
-                el.children[0].children[0].name = 'dislike';
-                el.children[0].children[0].innerHTML = '<i class="far fa-heart"></i>';
-                el.children[0].children[2].name = 'dislike';
-                el.children[0].children[2].innerHTML = '<i class="fas fa-heart"></i>';
-                // изменяем счетчик лайков на +1
-                // console.log(el.parentNode.children[1].innerHTML);
-                let countLikes = Number(el.parentNode.children[2].innerHTML) + 1;
-                // console.log(countLikes);
-                el.parentNode.children[2].innerHTML = countLikes;
+    fetch(url, {method: method, body: formData})
+        .then(response => response.json())
+        .then((response) => {
+            // console.log(response);
+            if ('result' in response) {
+                if (response.result) {
+                    if (response.request.action === 'like') {
+                        // console.log("Меняем стили с лайка на дизлайк");
+                        el.children[0].children[0].name = 'dislike';
+                        el.children[0].children[0].innerHTML = '<i class="far fa-heart"></i>';
+                        el.children[0].children[2].name = 'dislike';
+                        el.children[0].children[2].innerHTML = '<i class="fas fa-heart"></i>';
+                        // изменяем счетчик лайков на +1
+                        // console.log(el.parentNode.children[1].innerHTML);
+                        let countLikes = Number(el.parentNode.children[2].innerHTML) + 1;
+                        // console.log(countLikes);
+                        el.parentNode.children[2].innerHTML = countLikes;
+                    }
+                    if (response.request.action === 'dislike') {
+                        // console.log("Меняем стили с дизлайка на лайк");
+                        el.children[0].children[0].name = 'like';
+                        el.children[0].children[0].innerHTML = '<i class="fas fa-heart"></i>';
+                        el.children[0].children[2].name = 'like';
+                        el.children[0].children[2].innerHTML = '<i class="far fa-heart"></i>';
+                        // изменяем счетчик лайков на -1
+                        // console.log(el.parentNode.children[1].innerHTML);
+                        let countLikes = Number(el.parentNode.children[2].innerHTML) - 1;
+                        // console.log(countLikes);
+                        el.parentNode.children[2].innerHTML = countLikes;
+                    }
+                }
             }
-            if (likeRequest.response[0] == 'd') {
-                // console.log("Меняем стили с дизлайка на лайк");
-                el.children[0].children[0].name = 'like';
-                el.children[0].children[0].innerHTML = '<i class="fas fa-heart"></i>';
-                el.children[0].children[2].name = 'like';
-                el.children[0].children[2].innerHTML = '<i class="far fa-heart"></i>';
-                // изменяем счетчик лайков на -1
-                // console.log(el.parentNode.children[1].innerHTML);
-                let countLikes = Number(el.parentNode.children[2].innerHTML) - 1;
-                // console.log(countLikes);
-                el.parentNode.children[2].innerHTML = countLikes;
-            }
-        }
-    };
+        });
 
-    likeRequest.onerror = function () {
-        // console.log("Запрос не удался");
-    };
+    // let likeRequest = new XMLHttpRequest();
+    // let method = 'POST';
+    // let url = 'https://pv-foto.ru/ajax/'
+    // likeRequest.open(method, url); // подготавливаем запрос
+    // likeRequest.send(formData); // посылаем запрос
+
+    // likeRequest.onload = function () {
+    //     if (likeRequest.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+    //         console.log(`Ошибка ${likeRequest.status}: ${likeRequest.statusText}`); // Например, 404: Not Found
+    //     } else { // если всё прошло гладко, выводим результат
+    //         console.log(`Готово, получили ${likeRequest.response.length} байт`); // response -- это ответ сервера
+    //         console.log('Полученный ответ: ', likeRequest.response);
+    //         // после удачного ответа от сервера - меняем стили для кнопок
+    //         if (likeRequest.response[0] == 'l') {
+    //             // console.log("Меняем стили с лайка на дизлайк");
+    //             el.children[0].children[0].name = 'dislike';
+    //             el.children[0].children[0].innerHTML = '<i class="far fa-heart"></i>';
+    //             el.children[0].children[2].name = 'dislike';
+    //             el.children[0].children[2].innerHTML = '<i class="fas fa-heart"></i>';
+    //             // изменяем счетчик лайков на +1
+    //             // console.log(el.parentNode.children[1].innerHTML);
+    //             let countLikes = Number(el.parentNode.children[2].innerHTML) + 1;
+    //             // console.log(countLikes);
+    //             el.parentNode.children[2].innerHTML = countLikes;
+    //         }
+    //         if (likeRequest.response[0] == 'd') {
+    //             // console.log("Меняем стили с дизлайка на лайк");
+    //             el.children[0].children[0].name = 'like';
+    //             el.children[0].children[0].innerHTML = '<i class="fas fa-heart"></i>';
+    //             el.children[0].children[2].name = 'like';
+    //             el.children[0].children[2].innerHTML = '<i class="far fa-heart"></i>';
+    //             // изменяем счетчик лайков на -1
+    //             // console.log(el.parentNode.children[1].innerHTML);
+    //             let countLikes = Number(el.parentNode.children[2].innerHTML) - 1;
+    //             // console.log(countLikes);
+    //             el.parentNode.children[2].innerHTML = countLikes;
+    //         }
+    //     }
+    // };
+    //
+    // likeRequest.onerror = function () {
+    //     // console.log("Запрос не удался");
+    //     // console.log(likeRequest.response);
+    // };
 }
 
 let hearts = document.getElementsByClassName('change-heart'); // поле с сердцем и количеством лайков
