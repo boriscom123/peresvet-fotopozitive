@@ -17,7 +17,7 @@ html {
 
 body {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: #ffffff;
   font-family: "Lato", sans-serif;
   font-size: 16px;
@@ -2053,6 +2053,7 @@ a {
 
 .page-video {
   background-color: rgb(39, 36, 93);
+  overflow: hidden;
 }
 .page-video > .container {
   width: calc(100% - 60px);
@@ -3648,6 +3649,146 @@ a {
 
 .previous-contest-view {
   background-color: pink;
+}
+
+.images-list {
+  background-color: pink;
+  width: calc(100% - 60px);
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+.images-list > .card {
+  width: calc((100% - 40px) / 3);
+  min-width: 100px;
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.04), 0 4px 4px rgba(0, 0, 0, 0.04), 0 8px 8px rgba(0, 0, 0, 0.02);
+  border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+}
+@media (max-width: 460px) {
+  .images-list > .card {
+    width: calc((100% - 20px) / 2);
+  }
+}
+@media (max-width: 320px) {
+  .images-list > .card {
+    width: 100%;
+  }
+}
+.images-list > .card > .image-block {
+  cursor: pointer;
+}
+.images-list > .card > .image-block > .image {
+  width: 100%;
+  background-color: pink;
+}
+.images-list > .card > .image-block > .image > img {
+  width: 100%;
+  object-fit: contain;
+  display: flex;
+}
+.images-list > .card > .image-block > .image > .comment {
+  display: flex;
+  position: absolute;
+  background-color: rgba(2, 14, 100, 0.8);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-indent: 10%;
+  overflow: hidden;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+}
+.images-list > .card > .image-block > .image > .comment > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* margin: 5% 5% 0 5%; */
+  padding: 5% 5% 0 5%;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+.images-list > .card > .image-block > .image > .comment:hover {
+  opacity: 1;
+}
+.images-list > .card > .info-block {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.images-list > .card > .info-block > .number {
+  position: absolute;
+  top: 0;
+  left: 3%;
+  height: 100%;
+  font-size: 13px;
+  color: rgba(2, 14, 100, 0.5);
+  display: flex;
+  align-items: center;
+}
+.images-list > .card > .info-block > div > form > button {
+  border: none;
+  outline: none;
+  background: none;
+}
+.images-list > .card > .info-block > div > form > button > i {
+  font-size: 16px;
+  color: #020e64;
+  right: 4px;
+  cursor: pointer;
+  /* transition: 0.3s; */
+}
+.images-list > .card > .info-block > div > form > button > i:hover {
+  color: red;
+}
+@media (hover: hover) and (pointer: fine) {
+  .images-list > .card > .info-block > div:hover > form > button:first-child {
+    display: block;
+  }
+  .images-list > .card > .info-block > div:hover > form > button:last-child {
+    display: none;
+  }
+}
+.images-list > .card > .info-block > div > div > button {
+  border: none;
+  outline: none;
+  background: none;
+}
+.images-list > .card > .info-block > div > div > button > i {
+  font-size: 16px;
+  color: #020e64;
+  right: 4px;
+  cursor: pointer;
+  /* transition: 0.3s; */
+}
+.images-list > .card > .info-block > div > div > button > i:hover {
+  color: red;
+}
+@media (hover: hover) and (pointer: fine) {
+  .images-list > .card > .info-block > div:hover > div > button:first-child {
+    display: block;
+  }
+  .images-list > .card > .info-block > div:hover > div > button:last-child {
+    display: none;
+  }
+}
+.images-list > .card > .info-block > p {
+  font-size: 13px;
+  font-weight: 900;
+  color: #020e64;
+  letter-spacing: 0.01em;
+  margin-left: 4px;
 }
 
 /*# sourceMappingURL=main.css.map */

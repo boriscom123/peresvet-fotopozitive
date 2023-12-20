@@ -5,7 +5,6 @@
   outline: none;
   appearance: none;
   border: none;
-  transition: 0.3s;
   line-height: 100%;
   box-sizing: border-box;
 }
@@ -18,7 +17,7 @@ html {
 
 body {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: #ffffff;
   font-family: "Lato", sans-serif;
   font-size: 16px;
@@ -394,6 +393,10 @@ a {
   right: 0;
 }
 
+.step-end {
+  transition: 0.3s;
+}
+
 .main-header {
   position: relative;
 }
@@ -542,10 +545,49 @@ a {
   width: 0;
   background-color: #f6f6f6;
 }
+.main-header .header-flex > .header-fixed > .container > .header-nav-exit {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+.main-header .header-flex > .header-fixed > .container > .header-nav-exit:hover {
+  cursor: pointer;
+}
+.main-header .header-flex > .header-fixed > .container > .header-nav-exit:hover > .decoration {
+  width: 100%;
+}
+.main-header .header-flex > .header-fixed > .container > .header-nav-exit > a {
+  margin: 7px 0 0 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+@media (max-width: 1000px) {
+  .main-header .header-flex > .header-fixed > .container > .header-nav-exit > a {
+    font-size: 16px;
+  }
+}
+@media (max-width: 900px) {
+  .main-header .header-flex > .header-fixed > .container > .header-nav-exit > a {
+    font-size: 14px;
+  }
+}
+.main-header .header-flex > .header-fixed > .container > .header-nav-exit > .decoration {
+  height: 2px;
+  width: 0;
+  background-color: #f6f6f6;
+}
 .main-header .header-flex > .header-fixed > .container > .header-buttons {
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
+  max-width: 270px;
 }
 @media (max-width: 799px) {
   .main-header .header-flex > .header-fixed > .container > .header-buttons {
@@ -591,7 +633,6 @@ a {
   font-weight: 400;
   color: #ffffff;
   text-align: center;
-  letter-spacing: 0.01em;
 }
 @media (max-width: 1000px) {
   .main-header .header-flex > .header-fixed > .container > .header-buttons > a {
@@ -615,6 +656,8 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 100px;
 }
 .main-header .header-flex > .header-fixed > .container > .header-buttons > .button-login:hover {
   border: 1px solid #f6f6f6;
@@ -630,6 +673,8 @@ a {
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+  width: 100%;
+  max-width: 150px;
 }
 .main-header .header-flex > .header-fixed > .container > .header-buttons > .button-registration:hover {
   text-decoration: none;
@@ -717,6 +762,44 @@ a {
   }
 }
 .main-header .header-flex > .header-fixed > .container > .header-burger > .burger-menu > .header-nav > .link > .decoration {
+  height: 2px;
+  width: 0;
+  background-color: #f6f6f6;
+}
+.main-header .header-flex > .header-fixed > .container > .header-burger > .burger-menu > .header-nav-exit {
+  margin: 25px 0 0 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  padding: 0 10px;
+}
+.main-header .header-flex > .header-fixed > .container > .header-burger > .burger-menu > .header-nav-exit:hover {
+  cursor: pointer;
+}
+.main-header .header-flex > .header-fixed > .container > .header-burger > .burger-menu > .header-nav-exit:hover > .decoration {
+  width: 100%;
+}
+.main-header .header-flex > .header-fixed > .container > .header-burger > .burger-menu > .header-nav-exit > a {
+  margin: 7px 0 0 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+@media (max-width: 1000px) {
+  .main-header .header-flex > .header-fixed > .container > .header-burger > .burger-menu > .header-nav-exit > a {
+    font-size: 16px;
+  }
+}
+@media (max-width: 900px) {
+  .main-header .header-flex > .header-fixed > .container > .header-burger > .burger-menu > .header-nav-exit > a {
+    font-size: 14px;
+  }
+}
+.main-header .header-flex > .header-fixed > .container > .header-burger > .burger-menu > .header-nav-exit > .decoration {
   height: 2px;
   width: 0;
   background-color: #f6f6f6;
@@ -2245,10 +2328,9 @@ a {
 }
 
 .join {
-  height: 122px;
+  height: 200px;
   background-color: #0d0d59;
   position: relative;
-  z-index: 1;
 }
 .join__content {
   height: inherit;
@@ -2272,7 +2354,8 @@ a {
   font-weight: 900;
   color: #ffffff;
   text-align: center;
-  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 5;
 }
 .join__content > .button:hover {
   background-color: #ad0107;
@@ -2301,12 +2384,33 @@ a {
 .join__content > button:active {
   background-color: #7a0105;
 }
+.join__content > a {
+  height: 70px;
+  width: calc(100% - 60px);
+  max-width: 320px;
+  border-radius: 15px;
+  background-color: #e12846;
+  color: #ffffff;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.join__content > a:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 399px) {
+  .join__content > a {
+    height: 50px;
+    font-size: 20px;
+  }
+}
 
 .footer {
   width: 100%;
   background-color: #000026;
   padding: 11px 0 11px 0;
-  z-index: 0;
+  z-index: 1;
   position: relative;
 }
 .footer-flex {

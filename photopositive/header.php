@@ -43,70 +43,6 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
         exit;
     }
 }
-
-// форма регистрации
-// if(isset($_POST['pass']) && isset($_POST['pass2']) && isset($_POST['u-tel'])) {
-// 	// echo "Регистрируем пользователя";
-// 	if($_POST['pass2'] === $_POST['pass2']) {
-// 		if($_POST['reg-code'] == $_SESSION['reg-code']) {
-// 			$userdata = array(
-// 				'user_login' => $_POST['u-tel'],
-// 				'user_pass'  => $_POST['pass2'],
-// 				// 'user_email' => $_POST['u-tel'].'@mail.ru',
-// 				'display_name'    => '*'.substr($_POST['u-tel'], -4),
-// 				// 'last_name'       => $_POST['u-tel'],
-// 				'nickname'        => '*'.substr($_POST['u-tel'], -4),
-// 			);
-// 			$user_id = wp_insert_user( $userdata ) ;
-// 			if( ! is_wp_error( $user_id ) ) {
-// 				// логинем пользователя после регистрации
-// 				$credentials = array(
-// 							'user_login'    => $_POST['u-tel'],
-// 							'user_password' => $_POST['pass2'],
-// 							'remember'      => true,
-// 							);
-// 				$secure_cookie = '';
-// 				$user = wp_signon( $credentials);
-// 					if ( is_wp_error($user) ) {
-// 					} else {
-// 					 // не забываем добавить номер телефона
-// 					 $current_user_id = $user_id;
-// 					 $user_tel = preg_replace('/\D/', '', $_POST['u-tel']);
-// 					 if($user_tel[0] == 8){
-// 						$user_tel = '7'.substr($user_tel, 1);
-// 					 }elseif($user_tel[0] == 9){
-// 						$user_tel = '7'.$user_tel;
-// 					 }
-// 					 wp_update_user( [ 'ID' => $current_user_id, 'description' => $user_tel] );
-// 					 // и отправить запрос на добавление новой сделки в амо срм
-// 					 // интеграция amoCRM
-// 					 if(!file_exists('amointegrationapi.json')){
-// 							// echo "Делаем новую интеграцию";
-// 							include 'amocrm.php';
-// 						 } else {
-// 							// echo "Используем имеющийся токен";
-// 							$token = explode("/",file_get_contents("amointegrationapi.json"));
-// 							if(json_decode($token[1], true)['until'] < $_SERVER['REQUEST_TIME']){
-// 								// echo "Токен просрочен";
-// 								include 'amocrmrefresh.php';
-// 								// echo "Токен обновлен";
-// 							}
-// 							// $access_token = json_decode($token[0], true)['access_token'];
-// 							echo "Отправляем в Амо";
-// 							// include 'addcontact.php';
-// 							// echo "Добавление прошло";
-// 						}
-// 					echo "редирект на страницу личного кабинета";
-// 					// wp_redirect( 'https://pv-foto.ru/%d0%bb%d0%b8%d1%87%d0%bd%d1%8b%d0%b9-%d0%ba%d0%b0%d0%b1%d0%b8%d0%bd%d0%b5%d1%82/', 302 );
-// 					exit;
-// 					}
-// 				// return true;
-// 			} else {
-// 				// return $user_id->get_error_message();
-// 			}
-// 		}
-// 	}
-// }
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -121,7 +57,7 @@ if (isset($_POST['login-submit']) && isset($_POST['login']) && isset($_POST['pas
 <body <?php body_class(); ?>>
 
 <header class="main-header" id="line-start-block">
-    <div class="d-none">
+    <div class="amo-crm-info d-none">
         <?php
         $amo_file = get_template_directory() . '/assets/amo_crm_integration/' . 'amo_crm_data.json';
         if (!file_exists($amo_file)) {

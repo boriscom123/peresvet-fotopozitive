@@ -9,7 +9,7 @@
 
 if (!defined('_S_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('_S_VERSION', '1.0.69');
+    define('_S_VERSION', '1.0.70');
 }
 
 if (!function_exists('photopositive_setup')) :
@@ -148,76 +148,66 @@ add_action('widgets_init', 'photopositive_widgets_init');
  */
 function photopositive_scripts()
 {
+    /** Обновление подключения стилей - все в 1 файл независимо от страницы */
+    if (is_page('main')) {
+        wp_enqueue_style('photopositive-index', get_template_directory_uri() . '/assets/style/main.css', array(), _S_VERSION);
+    } else {
+        if (is_page(12)) { // страница Личного кабинета
+            wp_enqueue_style('photopositive-user-page', get_template_directory_uri() . '/assets/style/user-page.css', array(), _S_VERSION);
+        }
+        if (is_single()) { // страница отображения 1 поста
+            wp_enqueue_style('photopositive-photo', get_template_directory_uri() . '/assets/style/photo.css', array(), _S_VERSION);
+        }
+        if (is_404()) { // страница 404
+            wp_enqueue_style('photopositive-index', get_template_directory_uri() . '/assets/style/index.css', array(), _S_VERSION);
+        }
+        if (is_archive()) { // страница галереи
+            wp_enqueue_style('photopositive-archive', get_template_directory_uri() . '/assets/style/archive.css', array(), _S_VERSION);
+        }
 
-//    if (is_page(6)) { // главная страница
-//        wp_enqueue_style('photopositive-index', get_template_directory_uri() . '/assets/style/index.css', array(), _S_VERSION);
-//    }
-//    if (is_home()) { // страница галереи
-//        wp_enqueue_style('photopositive-gallery', get_template_directory_uri() . '/assets/style/gallery.css', array(), _S_VERSION);
-//    }
-//    if (is_page(10)) { // страница победителей
-//        wp_enqueue_style('photopositive-projects', get_template_directory_uri() . '/assets/style/projects.css', array(), _S_VERSION);
-//    }
-    if (is_page(12)) { // страница Личного кабинета
-        wp_enqueue_style('photopositive-user-page', get_template_directory_uri() . '/assets/style/user-page.css', array(), _S_VERSION);
-    }
-    if (is_single()) { // страница отображения 1 поста
-        wp_enqueue_style('photopositive-photo', get_template_directory_uri() . '/assets/style/photo.css', array(), _S_VERSION);
-    }
-    if (is_404()) { // страница 404
         wp_enqueue_style('photopositive-index', get_template_directory_uri() . '/assets/style/index.css', array(), _S_VERSION);
     }
-    if (is_archive()) { // страница галереи
-        wp_enqueue_style('photopositive-archive', get_template_directory_uri() . '/assets/style/archive.css', array(), _S_VERSION);
-    }
 
-    /** Обновление подключения стилей - все в 1 файл независимо от страницы */
-    wp_enqueue_style('photopositive-index', get_template_directory_uri() . '/assets/style/index.css', array(), _S_VERSION);
-    wp_enqueue_style('photopositive-index', get_template_directory_uri() . '/assets/style/main.css', array(), _S_VERSION);
-
+    /** Подключание файла для добавления кастомных настроек */
     wp_enqueue_style('photopositive-style', get_stylesheet_uri(), array(), _S_VERSION);
-    /** wp_enqueue_style( 'photopositive-photo', get_template_directory_uri().'/assets/style/photo.css', array(), _S_VERSION ); */
-    /** wp_enqueue_style( 'photopositive-user-page', get_template_directory_uri().'/assets/style/user-page.css', array(), _S_VERSION ); */
-
     wp_style_add_data('photopositive-style', 'rtl', 'replace');
 
+    /** Подключение иконок */
     wp_enqueue_script('photopositive-fontawesome', 'https://kit.fontawesome.com/418d1ec454.js', array(), _S_VERSION, true);
 
-    /** Обновление подключения скриптов - все в 1 файл независимо от страницы */
-    wp_enqueue_script('photopositive-index', get_template_directory_uri() . '/assets/script/index.js', array(), _S_VERSION, true);
+    if(is_page('main')) {
+        wp_enqueue_script('photopositive-index', get_template_directory_uri() . '/assets/script/main.js', array(), _S_VERSION, true);
+    } else {
+        /** Обновление подключения скриптов - все в 1 файл независимо от страницы */
+        wp_enqueue_script('photopositive-index', get_template_directory_uri() . '/assets/script/index.js', array(), _S_VERSION, true);
 
-    /** Обновление подключения скриптов отрисовки линии - все в 1 файл независимо от страницы */
-    wp_enqueue_script('photopositive-line', get_template_directory_uri() . '/assets/script/line.js', array(), _S_VERSION, true);
+        /** Обновление подключения скриптов отрисовки линии - все в 1 файл независимо от страницы */
+        wp_enqueue_script('photopositive-line', get_template_directory_uri() . '/assets/script/line.js', array(), _S_VERSION, true);
 
-    if (is_page(6)) {  // главная страница
-        wp_enqueue_script('photopositive-script', get_template_directory_uri() . '/assets/script/script.js', array(), _S_VERSION, true);
-//		wp_enqueue_script( 'photopositive-index-line', get_template_directory_uri() . '/assets/script/index-line.js', array(), _S_VERSION, true );
-    }
-    if (is_home()) {  // страница галереи
-        wp_enqueue_script('photopositive-gallery', get_template_directory_uri() . '/assets/script/gallery.js', array(), _S_VERSION, true);
-//		wp_enqueue_script( 'photopositive-gallery-line', get_template_directory_uri() . '/assets/script/gallery-line.js', array(), _S_VERSION, true );
-    }
-    if (is_page(10)) { // страница победителей
-        wp_enqueue_script('photopositive-projects', get_template_directory_uri() . '/assets/script/projects.js', array(), _S_VERSION, true);
-//		wp_enqueue_script( 'photopositive-projects-line', get_template_directory_uri() . '/assets/script/projects-line.js', array(), _S_VERSION, true );
-    }
-    if (is_page(12)) { // страница Личного кабинета
-        wp_enqueue_script('photopositive-user-page-gallery', get_template_directory_uri() . '/assets/script/user-page-gallery.js', array(), _S_VERSION, true);
-//        wp_enqueue_script('photopositive-user-page-line', get_template_directory_uri() . '/assets/script/user-page-line.js', array(), _S_VERSION, true);
-    }
-    if (is_404()) { // страница 404
-        wp_enqueue_script('photopositive-script', get_template_directory_uri() . '/assets/script/script.js', array(), _S_VERSION, true);
-//        wp_enqueue_script('photopositive-index-line', get_template_directory_uri() . '/assets/script/index-line.js', array(), _S_VERSION, true);
-    }
-    if (is_single()) { // страница отображения 1 поста
-        wp_enqueue_script('photopositive-script', get_template_directory_uri() . '/assets/script/single.js', array(), _S_VERSION, true);
-    }
-    if (is_archive()) { // страница отображения 1 поста
-        wp_enqueue_script('photopositive-script', get_template_directory_uri() . '/assets/script/archive.js', array(), _S_VERSION, true);
-//		wp_enqueue_script( 'photopositive-archive-line', get_template_directory_uri() . '/assets/script/archive-line.js', array(), _S_VERSION, true );
-    }
-    if (is_singular() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
+        if (is_page(6)) {  // главная страница
+            wp_enqueue_script('photopositive-script', get_template_directory_uri() . '/assets/script/script.js', array(), _S_VERSION, true);
+        }
+        if (is_home()) {  // страница галереи
+            wp_enqueue_script('photopositive-gallery', get_template_directory_uri() . '/assets/script/gallery.js', array(), _S_VERSION, true);
+        }
+        if (is_page(10)) { // страница победителей
+            wp_enqueue_script('photopositive-projects', get_template_directory_uri() . '/assets/script/projects.js', array(), _S_VERSION, true);
+        }
+        if (is_page(12)) { // страница Личного кабинета
+            wp_enqueue_script('photopositive-user-page-gallery', get_template_directory_uri() . '/assets/script/user-page-gallery.js', array(), _S_VERSION, true);
+        }
+        if (is_404()) { // страница 404
+            wp_enqueue_script('photopositive-script', get_template_directory_uri() . '/assets/script/script.js', array(), _S_VERSION, true);
+        }
+        if (is_single()) { // страница отображения 1 поста
+            wp_enqueue_script('photopositive-script', get_template_directory_uri() . '/assets/script/single.js', array(), _S_VERSION, true);
+        }
+        if (is_archive()) { // страница отображения 1 поста
+            wp_enqueue_script('photopositive-script', get_template_directory_uri() . '/assets/script/archive.js', array(), _S_VERSION, true);
+        }
+        if (is_singular() && comments_open() && get_option('thread_comments')) {
+            wp_enqueue_script('comment-reply');
+        }
     }
 }
 
