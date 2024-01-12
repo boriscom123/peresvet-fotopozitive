@@ -105,9 +105,9 @@ get_header();
                     <?php
                     // wp_reset_postdata();
                     $leaders_limit--;
-                    if ($leaders_limit == 0) {
-                        break;
-                    }
+//                    if ($leaders_limit == 0) {
+//                        break;
+//                    }
                 }
             }
 
